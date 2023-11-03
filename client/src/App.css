@@ -1,0 +1,404 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.home {
+  background-image: url('./images/Home3.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-size: 80px;
+
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.login {
+  background-image: url('./images/one.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #111010;
+  font-size: 100px;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.aboutus {
+  background-image: url('./images/logo_new.png');
+  background-position: center;
+  background-size: 45%;
+  background-repeat: no-repeat;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #070707;
+  background-color: rgb(1, 192, 192);
+  
+  
+}
+
+.aboutus img {
+  max-width: 60%; 
+  display: block; 
+  margin: 0 auto; 
+}
+
+.text-column {
+  
+  line-height: 1.5;
+  text-align: center;
+ 
+}
+
+.text-column h1 {
+  color: rgb(177, 3, 3);
+  font-weight: bold;
+  line-height: 2.0;
+  font-style: italic;
+}
+
+.text-column h3 {
+  color: rgb(1, 1, 32);
+  line-height: 2.0;
+}
+
+.ourmission {
+  background-image: url('./images/mission.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #130101; 
+  font-size: 20px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  height: 90vh;
+  position: relative;
+}
+
+.ourmission h1 {
+  
+  padding-bottom: 5px; 
+  color: #810000; 
+  font-size: 42px; 
+  font-weight: bold;
+  line-height: 3.0;
+  margin-top: 10;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+.ourmission h3 {
+  line-height: 3.0;
+  font-size: 26px; 
+  padding-bottom: 15px;
+  font-style: italic;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  
+}
+
+.ourmission h4 {
+  padding-top: 20px; 
+  line-height: 2.0;
+  font-size: 22px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  color: #5a0101; 
+  align-items: center;
+
+}
+
+.ourmission p {
+  line-height: 2.0;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+ }
+
+.school {
+  background-image: url('./images/one.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #111010;
+  font-size: 100px;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.loginPage {
+   background-image: url('./images/one.jpg');
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 90vh;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+
+}
+
+.signupPage {
+   background-image: url('./images/one.jpg');
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 90vh;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+ 
+}
+
+.donPage {
+  background-image: url('./images/one.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.schPage {
+  background-image: url('./images/one.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.border{
+   width: 500px;
+   background-color: transparent;
+   color: #020000;
+   border-radius: 10px;
+   padding: 30px 40px;  
+}
+
+.border h2{
+  font-size: 36px;
+  text-align: center;
+  
+}
+.border .mb-3{
+  width: auto;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.mb-3 input{
+  width: 100%;
+  height: 80%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #080808;
+  padding: 20px 35px 20px 20px;
+}
+
+.form-control{
+  width: 100%;
+  height: 80%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #080808;
+  padding: 20px 35px 20px 20px;
+}
+
+.mb-3 input:placeholder{
+  color: #fff;
+}
+
+.border .btn {
+  width: 100%;
+  height: 35px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  cursor: pointer;
+  font-size: 17px;
+  color: #0c0c0c;
+  font-weight: 800;
+  text-align: center;
+}
+
+.btn .btn--block {
+  width: 100%;
+  display: inline-block;
+}
+
+.text-danger{
+  font-size: 12px;
+  color: red;
+}
+
+.phg p{
+  font-style: #0c0c0c;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.donor {
+  background-image: url('./images/one.jpg');
+  background-position: bottom;
+  background-size:contain;
+  background-repeat: no-repeat;
+  color: #111010;
+  font-size: 100px;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.gallery {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+   column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+   column-width: 33%;
+   padding: 0 12px;
+}
+
+.gallery .pics{
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+@media(max-width: 991px){
+
+  .gallery{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+     column-count: 2;
+
+  }
+}
+
+@media(max-width:480px){
+  .gallery{
+    -webkit-column-count:3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 100%;
+  }
+}
+
+.model{
+  width: 100%;
+  height: 90vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #020000;
+  transition: opacity .4s ease, visibility .4s ease, transform .5s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.model.open{
+  visibility: visible;
+  opacity: 1;
+  transform: scale();
+
+}
+
+.model img{
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  line-height: 0;
+  box-sizing: border-box;
+  padding: 20px 0 20px;
+  margin: 0 auto;
+
+}
+
+.model.open svg{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.schoolbg {
+  background-image: url('./images/schPage.jpeg');
+  background-position: center;
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  color: #f80101;
+  font-size: 30px;
+  padding-top: 50px;
+  padding-left: 280Px;
+  display: flex;
+  height: 90vh;
+}
+.donorpage {
+  background-image: url('./images/dnewPage.jpg');
+  background-position: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  color: #f80101;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-left: 50Px;
+  display: flex;
+  height: 90vh;
+}
+
+
