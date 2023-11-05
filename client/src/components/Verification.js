@@ -4,6 +4,7 @@ import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
 
 function Verification() {
+  
   const location = useLocation();
   const navigate = useNavigate();
   const [verificationStatus, setVerificationStatus] = useState('Verifying...'); 

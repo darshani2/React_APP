@@ -10,10 +10,16 @@ function DonorPage() {
   return (
     <div >
       <DonNavbar />
-      <h1 className="donorpage">
-        Welcome to the Donor Home Page
-        </h1>
-      
+      <div className="donorpage">
+      <h1>
+        Welcome to the Donor Home DonorPage
+      </h1>
+      <h3>
+        Experience the joy of giving<br/>
+        &nbsp; &nbsp;&nbsp;&nbsp; by making a meaningful<br/> 
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; donation today.
+        </h3>
+        </div>
     </div>
   );
 };

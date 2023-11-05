@@ -1,19 +1,27 @@
+
+// src/components/School.js
 import React from 'react';
 import SchNavbar from './SchNavbar';
 import '../../App.css';
 
-function SchoolPage() {
-  const indentStyle = {
-    whiteSpace: 'pre-line',
-    fontFamily : 'Arial', 
-};
 
+function SchoolPage() {
+  
+  
   return (
     <div>
       <SchNavbar />
-      <h1 className="schoolbg" style={indentStyle}>
+      <div className="schoolbg">
+      <h1>
       Welcome to the School Home Page
     </h1>
+    <h3>
+    &nbsp;Empower young minds with the gift of knowledge.<br/>
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Request school stationery and<br/> 
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; make a difference today.
+        </h3>
+    
+    </div>
     </div>
   );
 };

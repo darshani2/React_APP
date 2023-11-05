@@ -55,7 +55,7 @@ function SchNavbar() {
           </li>
 
           <li className='nav-item'>
-            <Link to='/receivedDonations' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/schHis' className='nav-links' onClick={closeMobileMenu}>
               Received Donations
             </Link>
           </li>

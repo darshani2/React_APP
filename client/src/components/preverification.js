@@ -8,6 +8,7 @@ function PreVerification() {
     window.addEventListener('popstate', handleBackButtonPress);
 
     return () => {
+      
       window.removeEventListener('popstate', handleBackButtonPress);
     };
   }, []);
@@ -18,7 +19,7 @@ function PreVerification() {
   };
 
   return (
-    <div>
+    <div className='con'>
       <h2>Email Verification</h2>
       <p>Check your emails for Verification</p>
       <p> <Link to='/'>Return to Home</Link> </p>

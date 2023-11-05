@@ -21,6 +21,8 @@ import MakeReq from './components/sch_page/MakeReq';
 import Verification from './components/Verification';
 import Test from './components/Test'
 import PreVerification from './components/preverification';
+import Donhis from './components/donor_page/Donhis';
+import SchHis from './components/sch_page/SchHis';
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
           <Route path='/SchoolPage' element={<SchoolPage />} />
           <Route path='/Makedon' element={<Makedon />} />
           <Route path='/MakeReq' element={<MakeReq />} />
+          <Route path='/Donhis' element={<Donhis />} />
+          <Route path='/SchHis' element={<SchHis />} />
 
           <Route path="/tests" element={<Test/>} />
         </Routes>

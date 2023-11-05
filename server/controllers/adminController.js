@@ -5,6 +5,7 @@ const { sendVerificationEmail } = require('../emailService');
 const { generateToken, secretKey } = require('../authUtils');
 const {jwtDecode} = require('jwt-decode');
 
+
 const userRegister = async (req, res) => {
   try {
     const path = req.originalUrl;
