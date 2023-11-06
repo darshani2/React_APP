@@ -6,7 +6,7 @@ export default function Home() {
 
   const indentStyle = {
     whiteSpace: 'pre-line',
-    fontFamily : 'Arial', 
+    fontFamily : 'Helvetica', 
 };
 
   return (

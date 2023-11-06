@@ -12,9 +12,9 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #ffffff;
+  color: #f8f4f4;
   font-size: 80px;
-
+  font-style: italic;
   display: flex;
   height: 90vh;
   align-items: center;

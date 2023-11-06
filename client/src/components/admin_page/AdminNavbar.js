@@ -10,7 +10,7 @@ function AdminNavbar() {
 
   const location = useLocation();
   const isSchoolPage = location.pathname === '/AdminPage'; 
-  const [userData, setUserData] = useState();
+  const [ setUserData] = useState();
 
   const handleLogout = () => {
 
@@ -48,27 +48,16 @@ function AdminNavbar() {
             </li>
 
             <li className='nav-item'>
-            <Link to='/donorDetails' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/donHis' className='nav-links' onClick={closeMobileMenu}>
               Donor Details
             </Link>
           </li>
 
           <li className='nav-item'>
-            <Link to='/schoolDetails' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/schHis' className='nav-links' onClick={closeMobileMenu}>
               School Details
             </Link>
           </li>
-
-          <li className='nav-item'>
-            <Link to='/requests' className='nav-links' onClick={closeMobileMenu}>
-              Requests
-            </Link>
-          </li>
-
-          <li className='nav-item'>
-            <Link to='/donations' className='nav-links' onClick={closeMobileMenu}>
-              Donations
-            </Link>
 
             <li className='nav-item'>
               <Link className='nav-links' onClick={handleLogout}>
@@ -76,7 +65,6 @@ function AdminNavbar() {
               </Link>
             </li>
             
-          </li>
           </ul>
         </nav>
       )}

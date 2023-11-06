@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../../App.css';
 
 function Donhis() {
-  const [users] = useState([
-    {
-      Name: "Darshanie",
-      Email: "sewwandidarshani95@gmail.com",
-      Phone_Number: "123-456-7890",
-      NIC: "956880356V",
-      Types_of_Items: "Clothes",
-      Quantity: 5,
-      Location: "City"
-    }
-  ]);
+  const [users, setUsers] = useState([])
+    
+    useEffect(()=>{
+    axios.get('http://localhost:8081/user/makedonation')
+    .then(result => setUsers(result.data))
+    .catch(err => console.log(err))
+  })
 
   return (
     <div className="donhis">

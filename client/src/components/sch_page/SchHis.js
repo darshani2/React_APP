@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import axios from 'axios';
+import React, {useEffect , useState } from "react";
 import { Link } from "react-router-dom";
 import '../../App.css';
 
 function SchHis() {
-  const [users] = useState([
-    {
-      School_Name: "Omatta Kanitu Viduhala",
-      School_Email: "omattakanituviduhala@gmail.com",
-      Pricipal_NIC: "656880356V",
-      Types_of_Items: "Clothes",
-      Quantity: 5,
-      Location: "City"
-    }
-  ]);
+  const [users, setUsers] = useState([])
+    
+        useEffect(()=>{
+        axios.get('http://localhost:8081/makereq')
+        .then(result => setUsers(result.data))
+        .catch(err => console.log(err))
+      })
 
   return (
     <div className="schHis">

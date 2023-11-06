@@ -1,45 +1,55 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function MakeReq() {
-    const { id } = useParams();
-    const [itemType, setItemType] = useState(''); // State to store the selected item type
+    const[name,setName] = useState()
+    const[email,setEmail] = useState()
+    const[nic,setNIC] = useState()
+    const[item,setItem] = useState()
+    const[quantity,setQuantity] = useState()
+    const[location,setLocation] = useState()
+    const navigate = useNavigate()
 
-    const handleItemTypeChange = (e) => {
-        setItemType(e.target.value);
-    };
-
-    useEffect(() => {
-        axios.get('http://localhost:8081/makereq/' + id)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
-    }, [id]);
+    const Donate = (e) =>{
+        e.preventDefault();
+        axios.post('http://localhost:8081/user/makereq', {name,email,nic,item,quantity,location})
+        .then(result => {
+            console.log(result)
+        })
+        .catch(err => console.log(err))
+        navigate('/')
+    }
 
     return (
         <div className='schPage'>
             <div className='border'>
-                <form>
+                <form onSubmit={Donate}>
                     <h2>Make a Request</h2>
                     <div className='mb-3'>
                         <label htmlFor='name'><strong>School Name</strong></label>
-                        <input type='text' placeholder='Enter Name' className='form-control' />
+                        <input type='text' placeholder='Enter Name' className='form-control'
+                        onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className='mb-3'>
                         <label htmlFor='email'><strong> School Email</strong></label>
-                        <input type='email' placeholder='Enter Email' className='form-control' />
+                        <input type='email' placeholder='Enter Email' className='form-control' 
+                        onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className='mb-3'>
                         <label htmlFor='nic'><strong>Principal NIC</strong></label>
-                        <input type='text' placeholder='Enter NIC' className='form-control' />
+                        <input type='text' placeholder='Enter NIC' className='form-control' 
+                        onChange={(e) => setNIC(e.target.value)}/>
                     </div>
                     
                     <div className='mb-3'>
                         <label htmlFor='item'><strong>Types of Item</strong></label>
                         <select
                             className='form-control'
-                            value={itemType}
-                            onChange={handleItemTypeChange}
+                            onChange={(e) => setItem(e.target.value)}
+                            //value={itemType}
+                            //onChange={handleItemTypeChange}
                         >
                             <option value='' disabled hidden>
                                 Select an Item
@@ -54,13 +64,15 @@ function MakeReq() {
                     </div>
                     <div className='mb-3'>
                         <label htmlFor='quantity'><strong>Quantity</strong></label>
-                        <input type='text' placeholder='Enter Quantity' className='form-control' />
+                        <input type='text' placeholder='Enter Quantity' className='form-control' 
+                        onChange={(e) => setQuantity(e.target.value)}/>
                     </div>
                     <div className='mb-3'>
                         <label htmlFor='location'><strong>Location</strong></label>
-                        <input type='text' placeholder='Enter Location' className='form-control' />
+                        <input type='text' placeholder='Enter Location' className='form-control' 
+                        onChange={(e) => setLocation(e.target.value)}/>
                     </div>
-                    <button className='btn'>Donate</button>
+                    <Link to="/schHis" className="btn1"> Submit </Link>
                 </form>
             </div>
         </div>
