@@ -5,8 +5,6 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-
-
 .home {
   background-image: url('./images/Home3.jpeg');
   background-position: center;
@@ -38,8 +36,6 @@
   
 }
 
-
-
 .aboutus {
   background-image: url('./images/logo_new.png');
   background-position: center;
@@ -54,10 +50,7 @@
   color: #070707;
   background-color: rgb(189, 245, 245);
   
-  
 }
-
-
 
 .aboutus img {
   max-width: 60%; 
@@ -65,16 +58,12 @@
   margin: 0 auto; 
 }
 
-
-
 .text-column {
   
   line-height: 1.5;
   text-align: center;
  
 }
-
-
 
 .text-column h1 {
   color: rgb(177, 3, 3);
@@ -84,13 +73,10 @@
 }
 
 
-
 .text-column h3 {
   color: rgb(1, 1, 32);
   line-height: 2.0;
 }
-
-
 
 .ourmission {
   background-image: url('./images/mission.png');
@@ -108,8 +94,6 @@
   position: relative;
 }
 
-
-
 .ourmission h1 {
   
   padding-bottom: 5px; 
@@ -122,8 +106,6 @@
   font-style: italic;
 }
 
-
-
 .ourmission h3 {
   line-height: 3.0;
   font-size: 26px; 
@@ -132,8 +114,6 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   
 }
-
-
 
 .ourmission h4 {
   padding-top: 20px; 
@@ -146,15 +126,12 @@
 
 }
 
-
-
 .ourmission p {
   line-height: 2.0;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   font-style: italic;
  }
-
 
 
 .school {
@@ -171,8 +148,6 @@
   
 }
 
-
-
 .loginPage {
    background-image: url('./images/one.jpg');
    display: flex;
@@ -185,8 +160,6 @@
 
 }
 
-
-
 .signupPage {
    background-image: url('./images/one.jpg');
    display: flex;
@@ -198,8 +171,6 @@
    background-repeat: no-repeat;
  
 }
-
-
 
 .donPage {
   background-image: url('./images/makeReq.jpg');
@@ -237,8 +208,6 @@
   
 }
 
-
-
 .bor {
   border: 1px solid #0c0c0c;
   padding: 20px;
@@ -246,9 +215,6 @@
   background-color: #b5e6fc;
   background-position: center;
 }
-
-
-
 
 .btn1 {
   display: inline-block;
@@ -262,8 +228,6 @@
   
 }
 
-
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -275,8 +239,6 @@
   text-align: left;
 }
 
-
-
 .table th {
   background-color: #034485;
   color: #fff;
@@ -285,9 +247,6 @@
 .table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
-
-
 
 
 .schPage {
@@ -300,8 +259,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-
 
 .border{
    width: 500px;
@@ -317,22 +274,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .border h2{
   font-size: 36px;
   text-align: center;
   
 }
 
-
 .border .mb-3{
   width: auto;
   height: 50px;
   margin: 30px 0;
 }
-
-
 
 .mb-3 input{
   width: 100%;
@@ -347,8 +299,6 @@
   padding: 20px 35px 20px 20px;
 }
 
-
-
 .form-control{
   width: 100%;
   height: 80%;
@@ -360,19 +310,14 @@
   font-size: 16px;
   color: #080808;
   padding: 20px 35px 20px 20px;
-
   padding: 10px;
   border: 1px solid #ffffff;
   border-radius: 5px;
 }
 
-
-
 .mb-3 input:placeholder{
   color: #494949;
 }
-
-
 
 .border .btn {
   width: 100%;
@@ -389,21 +334,15 @@
   text-align: center;
 }
 
-
-
 .btn .btn--block {
   width: 100%;
   display: inline-block;
 }
 
-
-
 .text-danger{
   font-size: 12px;
   color: red;
 }
-
-
 
 .phg p{
   font-style: #0c0c0c;
@@ -412,8 +351,6 @@
   font-size: 16px;
   line-height: 40px;
 }
-
-
 
 .donor {
   background-image: url('./images/one.jpg');
@@ -429,8 +366,6 @@
   
 }
 
-
-
 .gallery {
   -webkit-column-count: 3;
   -moz-column-count: 3;
@@ -440,8 +375,6 @@
    column-width: 33%;
    padding: 0 12px;
 }
-
-
 
 .gallery .pics{
   -webkit-transition: all 350ms ease;
@@ -460,8 +393,6 @@
   }
 }
 
-
-
 @media(max-width:480px){
   
  .gallery{
@@ -473,8 +404,6 @@
     column-width: 100%;
   }
 }
-
-
 
 .model{
   width: 100%;
@@ -494,16 +423,12 @@
   z-index: 999;
 }
 
-
-
 .model.open{
   visibility: visible;
   opacity: 1;
   transform: scale();
 
 }
-
-
 
 .model img{
   width: auto;
@@ -517,8 +442,6 @@
 
 }
 
-
-
 .model.open svg{
   position: fixed;
   top: 10px;
@@ -531,8 +454,6 @@
   cursor: pointer;
 }
 
-
-
 .schoolbg {
   background-image: url('./images/schPage.jpeg');
   background-position: center;
@@ -540,7 +461,6 @@
   background-repeat: no-repeat;
   
 }
-
 
 
 .schoolbg h1 {
@@ -552,7 +472,6 @@
   display: flex;
   height: 40vh;
 }
-
 
 .schoolbg h3 {
   padding-bottom: 250px;
@@ -566,8 +485,6 @@
 }
 
 
-
-
 .donorpage {
   background-image: url('./images/dnewPage.jpg');
   background-position: center;
@@ -575,8 +492,6 @@
   background-repeat: no-repeat;
   
 }
-
-
 
 .donorpage h1 {
   
@@ -600,9 +515,6 @@
   line-height: 1.5;
 }
 
-
-
-
 .adminpage {
   background-image: url('./images/adminPage.jpg');
   background-position: center;
@@ -622,8 +534,36 @@
   background-position: center;
   background-size: cover; 
   background-repeat: no-repeat;
-  
- 
   height: 90vh;
+  font-size: 20px;
 }
+
+.con h2 {
+  
+  background:#459cf3;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 150);
+  border-radius: 40px;
+  color: #080808;
+  padding: 20px 35px 20px 20px;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+.con p{
+  
+  background:#61a8f0;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 150);
+  border-radius: 40px;
+  color: #080808;
+  padding: 20px 35px 20px 20px;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+
 
