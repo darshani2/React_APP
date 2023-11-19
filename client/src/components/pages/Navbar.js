@@ -59,6 +59,7 @@ function Navbar() {
             Gallery
           </Link>
         </li>
+        
         <li
           className='nav-item'
           onMouseEnter={onMouseEnter}

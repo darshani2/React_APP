@@ -25,7 +25,7 @@ function Donhis() {
               <th>Email</th>
               <th>Phone Number</th>
               <th>NIC</th>
-              <th>Types of Items</th>
+              <th>Size of Item</th>
               <th>Quantity</th>
               <th>Location</th>
               <th>Action</th>
@@ -39,7 +39,7 @@ function Donhis() {
                   <td>{user.Email}</td>
                   <td>{user.Phone_Number}</td>
                   <td>{user.NIC}</td>
-                  <td>{user.Types_of_Items}</td>
+                  <td>{user.Size_of_Item}</td>
                   <td>{user.Quantity}</td>
                   <td>{user.Location}</td>
                   

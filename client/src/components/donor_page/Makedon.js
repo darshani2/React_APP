@@ -7,7 +7,7 @@ function Makedon() {
     const[email,setEmail] = useState()
     const[phone,setPhone] = useState()
     const[nic,setNIC] = useState()
-    const[item,setItem] = useState()
+    const[item,setSize] = useState()
     const[quantity,setQuantity] = useState()
     const[location,setLocation] = useState()
 
@@ -43,24 +43,11 @@ function Makedon() {
                         onChange={(e) => setNIC(e.target.value)}/>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='item'><strong>Types of Item</strong></label>
-                        <select
-                            className='form-control'
-                            onChange={(e) => setItem(e.target.value)}
-                            //value={itemType}
-                            //onChange={handleItemTypeChange}
-                        >
-                            <option value='' disabled hidden>
-                                Select an Item
-                            </option>
-                            <option value='footwear'>Footwear</option>
-                            <option value='book'>Book</option>
-                            <option value='pen'>Pen</option>
-                            <option value='pencil'>Pencil</option>
-                            <option value='eraser'>Eraser</option>
-                            <option value='bag'>Bag</option>
-                        </select>
+                        <label htmlFor='nicitem'><strong>Size Of Item</strong></label>
+                        <input type='text' placeholder='Enter size' className='form-control' 
+                        onChange={(e) => setSize(e.target.value)}/>
                     </div>
+                    
                     <div className='mb-3'>
                         <label htmlFor='quantity'><strong>Quantity</strong></label>
                         <input type='text' placeholder='Enter Quantity' className='form-control' 

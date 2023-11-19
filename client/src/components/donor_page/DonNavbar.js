@@ -47,6 +47,11 @@ function DonNavbar() {
                 Home
               </Link>
             </li>
+            <li className='nav-item'>
+            <Link to='/donations' className='nav-links' onClick={closeMobileMenu}>
+              Donations
+            </Link>
+          </li>
 
             <li className='nav-item'>
             <Link to='/makedon' className='nav-links' onClick={closeMobileMenu}>

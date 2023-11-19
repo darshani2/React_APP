@@ -7,7 +7,7 @@ import { BellFill  } from 'react-bootstrap-icons';
 export function Button() {
   return (
     <>
-    <Link to='Notification'>
+    <Link to='NotificationPage'>
       <BellFill color='royalblue' />
     </Link>
     </>
