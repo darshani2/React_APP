@@ -7,3 +7,4 @@ router.post('/verify', donorController.userVerify);
 router.post('/login', donorController.userLogin);
 
 module.exports = router;
+

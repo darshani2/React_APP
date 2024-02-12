@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+//import { useSelector } from "react-redux";
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
@@ -16,13 +17,19 @@ import SchoolPage from './components/sch_page/SchoolPage';
 import DonorPage from './components/donor_page/DonorPage';
 import AdminPage from './components/admin_page/AdminPage';
 import MainPage from './components/pages/MainPage';
+import NotificationPage from './components/pages/NotificationPage';
 import Makedon from './components/donor_page/Makedon';
 import MakeReq from './components/sch_page/MakeReq';
 import Verification from './components/Verification';
 import Test from './components/Test'
 import PreVerification from './components/preverification';
 import Donhis from './components/donor_page/Donhis';
+import Donations from './components/donor_page/Donations';
 import SchHis from './components/sch_page/SchHis';
+
+
+
+
 
 function App() {
   return (
@@ -45,6 +52,7 @@ function App() {
           <Route path="/user/:role/verify" element={<Verification/>} />
           <Route path="/preverify" element={<PreVerification/>} />
 
+          <Route path='/NotificationPage' element={<NotificationPage/>} />
           <Route path='/AboutUs' element={<AboutUs/>} />
           <Route path='/OurMission' element={<OurMission/>} />
           <Route path='/Gallery' element={<Gallery/>} />
@@ -54,6 +62,7 @@ function App() {
           <Route path='/MakeReq' element={<MakeReq />} />
           <Route path='/Donhis' element={<Donhis />} />
           <Route path='/SchHis' element={<SchHis />} />
+          <Route path='/Donations' element={<Donations />} />
 
           <Route path="/tests" element={<Test/>} />
         </Routes>
