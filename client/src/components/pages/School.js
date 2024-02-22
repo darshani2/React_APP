@@ -9,7 +9,7 @@ function SchoolSignup() {
   const [values, setValues] = useState({
     name: '',
     email: '',
-    password: '',
+    phone_num: '',
   });
 
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function SchoolSignup() {
     event.preventDefault();
     setErrors(Validation(values));
 
-    if (!errors.name && !errors.email && !errors.password) {
+    if (!errors.name && !errors.email && !errors.number) {
       try {
         // Send a POST request to your server to register the user
         const response = await axios.post('http://localhost:8081/user/school/register', values);

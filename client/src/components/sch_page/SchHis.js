@@ -23,7 +23,7 @@ function SchHis() {
             <tr>
               <th>School_Name</th>
               <th>School_Email</th>
-              <th>Pricipal_NIC</th>
+              <th>Principal_PhoneNUmber</th>
               <th>Types of Items</th>
               <th>Quantity</th>
               <th>Location</th>
@@ -36,7 +36,7 @@ function SchHis() {
                 <tr key={index}>
                   <td>{user.School_Name}</td>
                   <td>{user.School_Email}</td>
-                  <td>{user.Pricipal_NIC}</td>
+                  <td>{user.Principal_PhoneNumber}</td>
                   <td>{user.Types_of_Items}</td>
                   <td>{user.Quantity}</td>
                   <td>{user.Location}</td>

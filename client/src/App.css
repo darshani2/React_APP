@@ -160,6 +160,18 @@
 
 }
 
+.otpPage {
+  background-image: url('./images/one.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
 .signupPage {
    background-image: url('./images/one.jpg');
    display: flex;

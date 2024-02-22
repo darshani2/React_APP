@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 function MakeReq() {
     const[name,setName] = useState()
     const[email,setEmail] = useState()
-    const[nic,setNIC] = useState()
-    const[item,setItem] = useState()
     const[quantity,setQuantity] = useState()
+    const[phone,setPhone] = useState()
+    const[item,setSize] = useState()
     const[location,setLocation] = useState()
     const navigate = useNavigate()
 
     const Donate = (e) =>{
         e.preventDefault();
-        axios.post('http://localhost:8081/user/makereq', {name,email,nic,item,quantity,location})
+        axios.post('http://localhost:8081/user/makereq', {name,email,quantity,phone,item, location})
         .then(result => {
             console.log(result)
         })
@@ -37,35 +37,23 @@ function MakeReq() {
                         <input type='email' placeholder='Enter Email' className='form-control' 
                         onChange={(e) => setEmail(e.target.value)}/>
                     </div>
-                    <div className='mb-3'>
-                        <label htmlFor='nic'><strong>Principal NIC</strong></label>
-                        <input type='text' placeholder='Enter NIC' className='form-control' 
-                        onChange={(e) => setNIC(e.target.value)}/>
-                    </div>
                     
-                    <div className='mb-3'>
-                        <label htmlFor='item'><strong>Types of Item</strong></label>
-                        <select
-                            className='form-control'
-                            onChange={(e) => setItem(e.target.value)}
-                            //value={itemType}
-                            //onChange={handleItemTypeChange}
-                        >
-                            <option value='' disabled hidden>
-                                Select an Item
-                            </option>
-                            <option value='footwear'>Footwear</option>
-                            <option value='book'>Book</option>
-                            <option value='pen'>Pen</option>
-                            <option value='pencil'>Pencil</option>
-                            <option value='eraser'>Eraser</option>
-                            <option value='bag'>Bag</option>
-                        </select>
-                    </div>
+                
                     <div className='mb-3'>
                         <label htmlFor='quantity'><strong>Quantity</strong></label>
                         <input type='text' placeholder='Enter Quantity' className='form-control' 
                         onChange={(e) => setQuantity(e.target.value)}/>
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor='phone'><strong>Phone number</strong></label>
+                        <input type='text' placeholder='Enter Phone' className='form-control' 
+                        onChange={(e) => setPhone(e.target.value)} />
+                    </div>
+                    
+                    <div className='mb-3'>
+                        <label htmlFor='nicitem'><strong>Size Of Item</strong></label>
+                        <input type='text' placeholder='Enter size' className='form-control' 
+                        onChange={(e) => setSize(e.target.value)}/>
                     </div>
                     <div className='mb-3'>
                         <label htmlFor='location'><strong>Location</strong></label>

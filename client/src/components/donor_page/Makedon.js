@@ -6,14 +6,13 @@ function Makedon() {
     const[name,setName] = useState()
     const[email,setEmail] = useState()
     const[phone,setPhone] = useState()
-    const[nic,setNIC] = useState()
     const[item,setSize] = useState()
     const[quantity,setQuantity] = useState()
     const[location,setLocation] = useState()
 
     const Donate = (e) =>{
         e.preventDefault();
-        axios.post('http://localhost:8081/user/makedonation', {name,email,phone,nic,item,quantity,location})
+        axios.post('http://localhost:8081/user/makedonation', {name,email,phone,item,quantity,location})
         .then(result => console.log(result))
         .catch(err => console.log(err))
     }
@@ -37,11 +36,7 @@ function Makedon() {
                         <input type='text' placeholder='Enter Phone' className='form-control' 
                         onChange={(e) => setPhone(e.target.value)} />
                     </div>
-                    <div className='mb-3'>
-                        <label htmlFor='nic'><strong>NIC</strong></label>
-                        <input type='text' placeholder='Enter NIC' className='form-control' 
-                        onChange={(e) => setNIC(e.target.value)}/>
-                    </div>
+                    
                     <div className='mb-3'>
                         <label htmlFor='nicitem'><strong>Size Of Item</strong></label>
                         <input type='text' placeholder='Enter size' className='form-control' 

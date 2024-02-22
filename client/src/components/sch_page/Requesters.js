@@ -8,7 +8,7 @@ import book from '../../images/book.png';
 import sneakers from '../../images/sneakers.png';
 
 
-const Donations = () => {
+const Requesters = () => {
   const data = [
     {
       id: 1,
@@ -32,7 +32,7 @@ const Donations = () => {
 
   const handleDonateClick = () => {
     // Add logic to handle the donation
-    alert('Donation processing...');
+    alert('Request processing...');
   };
 
   return (
@@ -44,7 +44,7 @@ const Donations = () => {
           </div>
         ))}
       </div>
-      {selected && <button onClick={handleDonateClick}>Donate</button>}
+      {selected && <button onClick={handleDonateClick}>Request</button>}
     </div>
   );
 };
@@ -54,11 +54,11 @@ const ItemCard = ({ title, imgSrc }) => {
     <div className="don-box">
       <img src={imgSrc} alt={title}></img>
       <h3>{title}</h3>
-      <a href='makedon' className='btn1'>Donate Now</a>
+      <a href='makeReq' className='btn1'>Request Now</a>
     </div>
   );
 };
 
-export default Donations;
+export default Requesters;
 
 
