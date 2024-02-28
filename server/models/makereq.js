@@ -9,6 +9,6 @@ const makereqSchema = new mongoose.Schema({
   location: String, 
 });
 
-const MakeReq = mongoose.model('makereq', makereqSchema);
+const MakeReq = mongoose.model('Makereq', makereqSchema);
 
 module.exports = MakeReq;

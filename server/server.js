@@ -30,7 +30,7 @@ app.use('/user/makedonation', makedonationRoutes);
 app.use('/user/makereq', makereqRoutes);
 
 
-//logout Enpoints
+//logout Endpoints
 app.post('/logout', (req, res) => {
   res.status(200).json({ message: 'Logged out successfully' });
 });

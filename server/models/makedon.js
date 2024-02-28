@@ -9,6 +9,6 @@ const makedonSchema = new mongoose.Schema({
   location: String, 
 });
 
-const MakeDon = mongoose.model('makedon', makedonSchema);
+const MakeDon = mongoose.model('Makedon', makedonSchema);
 
 module.exports = MakeDon;
