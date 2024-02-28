@@ -38,7 +38,7 @@ function Makedon() {
                     </div>
                     
                     <div className='mb-3'>
-                        <label htmlFor='nicitem'><strong>Size Of Item</strong></label>
+                        <label htmlFor='item'><strong>Size Of Item</strong></label>
                         <input type='text' placeholder='Enter size' className='form-control' 
                         onChange={(e) => setSize(e.target.value)}/>
                     </div>

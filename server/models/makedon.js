@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const makereqSchema = new mongoose.Schema({
+const makedonSchema = new mongoose.Schema({
   name: String,
   email: String,
   phone: Number,
@@ -9,6 +9,6 @@ const makereqSchema = new mongoose.Schema({
   location: String, 
 });
 
-const MakeReq = mongoose.model('makereq', makereqSchema);
+const MakeDon = mongoose.model('makedon', makedonSchema);
 
-module.exports = MakeReq;
+module.exports = MakeDon;
