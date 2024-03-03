@@ -38,23 +38,25 @@ function MakeReq() {
                         onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     
+                    <div className='mb-3'>
+                        <label htmlFor='phone'><strong>Phone number</strong></label>
+                        <input type='text' placeholder='Enter Phone' className='form-control' 
+                        onChange={(e) => setPhone(e.target.value)} />
+                    </div>
+
+                     <div className='mb-3'>
+                        <label htmlFor='item'><strong>Size Of Item</strong></label>
+                        <input type='text' placeholder='Enter size' className='form-control' 
+                        onChange={(e) => setSize(e.target.value)}/>
+                    </div>
                 
                     <div className='mb-3'>
                         <label htmlFor='quantity'><strong>Quantity</strong></label>
                         <input type='text' placeholder='Enter Quantity' className='form-control' 
                         onChange={(e) => setQuantity(e.target.value)}/>
                     </div>
-                    <div className='mb-3'>
-                        <label htmlFor='phone'><strong>Phone number</strong></label>
-                        <input type='text' placeholder='Enter Phone' className='form-control' 
-                        onChange={(e) => setPhone(e.target.value)} />
-                    </div>
                     
-                    <div className='mb-3'>
-                        <label htmlFor='item'><strong>Size Of Item</strong></label>
-                        <input type='text' placeholder='Enter size' className='form-control' 
-                        onChange={(e) => setSize(e.target.value)}/>
-                    </div>
+                    
                     <div className='mb-3'>
                         <label htmlFor='location'><strong>Location</strong></label>
                         <input type='text' placeholder='Enter Location' className='form-control' 

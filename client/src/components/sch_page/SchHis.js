@@ -21,9 +21,9 @@ function SchHis() {
         <table className="table">
           <thead>
             <tr>
-              <th>School_Name</th>
-              <th>School_Email</th>
-              <th>Principal_PhoneNUmber</th>
+              <th>School Name</th>
+              <th>Email</th>
+              <th>Phone NUmber</th>
               <th>Types of Items</th>
               <th>Quantity</th>
               <th>Location</th>
@@ -36,8 +36,8 @@ function SchHis() {
                 <tr key={index}>
                   <td>{user.School_Name}</td>
                   <td>{user.School_Email}</td>
-                  <td>{user.Principal_PhoneNumber}</td>
-                  <td>{user.Types_of_Items}</td>
+                  <td>{user.Phone_Number}</td>
+                  <td>{user.Size_of_Items}</td>
                   <td>{user.Quantity}</td>
                   <td>{user.Location}</td>
                   
