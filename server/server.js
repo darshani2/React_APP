@@ -20,14 +20,14 @@ require('./config/db');
 const adminRoutes = require('./routes/adminRoutes')
 const donorRoutes = require('./routes/donorRoutes')
 const schoolRoutes = require('./routes/schoolRoutes')
-const makedonationRoutes = require('./routes/makedonationRoutes');
-const makereq = require('./routes/makereqRoutes');
+//const makedonationRoutes = require('./routes/makedonationRoutes');
+//const makereq = require('./routes/makereqRoutes');
 
 app.use('/user/admin', adminRoutes);
 app.use('/user/donor', donorRoutes);
 app.use('/user/school', schoolRoutes);
-app.use('/user/makedonation', makedonationRoutes);
-app.use('/user/makereq', makereqRoutes);
+//app.use('/user/makedonation', makedonationRoutes);
+//app.use('/user/makereq', makereqRoutes);
 
 
 //logout Endpoints

@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const _ = requrie("lodash");
+//const _ = requrie("lodash");
 const axios = require("axios");
-const otpGenerator = require("otp_generator");
+const otpGenerator = require("otp-generator");
 const User = require('../models/school');
 const Otp = require('../models/otpModels');
 const { sendVerificationEmail } = require('../emailService');
