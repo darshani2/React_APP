@@ -155,6 +155,52 @@ const getAllDonor = async (req, res) => {
   }
 };
 
+const getDonorByEmail = async (req, res) => {
+  try {
+    let email = req.body.email;
+    const user = await MakeDon.find({ email }).then((donors) => {
+      res.status(200).send({ status: "donors fetched", donors });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with get donor" });
+  }
+};
+
+const deleteDonorById = async (req, res) => {
+  try {
+    let id = req.body.id;
+    await MakeDon.findByIdAndDelete(id).then(() => {
+      res.status(200).send({ status: "donor deleted" });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with delete donor" });
+  }
+};
+
+const updateDonorById = async (req, res) => {
+  try {
+    let id = req.body.id;
+    const { name, email, phone, item, quantity, location } = req.body;
+
+    const updateDonor = {
+      name,
+      email,
+      phone,
+      item,
+      quantity,
+      location,
+    };
+    const update = await MakeDon.findByIdAndUpdate(id, updateDonor).then(() => {
+      res.status(200).send({ status: "User Updated" });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with updating donor" });
+  }
+};
+
 module.exports = {
   userRegister,
   userVerify,
@@ -162,4 +208,7 @@ module.exports = {
   generateToken,
   addDonor,
   getAllDonor,
+  getDonorByEmail,
+  deleteDonorById,
+  updateDonorById,
 };

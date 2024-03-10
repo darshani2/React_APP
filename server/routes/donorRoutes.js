@@ -7,8 +7,8 @@ router.post("/verify", donorController.userVerify);
 router.post("/login", donorController.userLogin);
 router.post("/add", donorController.addDonor);
 router.get("/", donorController.getAllDonor);
-// router.post("/get", donorController.getDonor);
-// router.post("/update", donorController.updateDonor);
-// router.post("/delete", donorController.deleteDonor);
+router.get("/get", donorController.getDonorByEmail);
+router.put("/update", donorController.updateDonorById);
+router.delete("/delete", donorController.deleteDonorById);
 
 module.exports = router;
