@@ -1,28 +1,29 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 //const _ = requrie("lodash");
 const axios = require("axios");
 const otpGenerator = require("otp-generator");
-const User = require('../models/school');
-const Otp = require('../models/otpModels');
-const { sendVerificationEmail } = require('../emailService');
-const { generateToken, secretKey } = require('../authUtils');
-const {jwtDecode} = require('jwt-decode');
+const User = require("../models/school");
+const MakeDon = require("../models/makedon");
+const Otp = require("../models/otpModels");
+const { sendVerificationEmail } = require("../emailService");
+const { generateToken, secretKey } = require("../authUtils");
+const { jwtDecode } = require("jwt-decode");
 
 const userRegister = async (req, res) => {
   try {
     const path = req.originalUrl;
-    console.log(path)
+    console.log(path);
     let userRole;
 
-    if (path.includes('admin')) {
-        userRole = 'admin';
-      } else if (path.includes('donor')) {
-        userRole = 'donor';
-      } else if (path.includes('school')) {
-        userRole = 'school';
-      } else {
-        return res.status(400).json({ message: 'Invalid registration route' });
+    if (path.includes("admin")) {
+      userRole = "admin";
+    } else if (path.includes("donor")) {
+      userRole = "donor";
+    } else if (path.includes("school")) {
+      userRole = "school";
+    } else {
+      return res.status(400).json({ message: "Invalid registration route" });
     }
 
     const { name, email, password } = req.body;
@@ -42,12 +43,17 @@ const userRegister = async (req, res) => {
 
     await newUser.save();
 
-    sendVerificationEmail(newUser.email, verificationToken, `${userRole} Email Verification`, userRole);
+    sendVerificationEmail(
+      newUser.email,
+      verificationToken,
+      `${userRole} Email Verification`,
+      userRole
+    );
 
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Registration failed' });
+    res.status(500).json({ message: "Registration failed" });
   }
 };
 
@@ -63,61 +69,94 @@ const userVerify = async (req, res) => {
     if (user) {
       user.isVerified = true;
       await user.save();
-      res.status(200).json({ message: 'Email verified successfully' });
+      res.status(200).json({ message: "Email verified successfully" });
     } else {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
   } catch (error) {
     console.error(error);
-    res.status(400).json({ message: 'Email verification failed' });
+    res.status(400).json({ message: "Email verification failed" });
   }
 };
 
-
-  const userLogin = (request, response) => {
-    User.findOne({ email: request.body.email })
-      .then((user) => {
-        bcrypt
-          .compare(request.body.password, user.password)
-          .then((passwordCheck) => {
-            if (!passwordCheck) {
-              return response.status(400).send({
-                message: 'Passwords do not match',
-                error,
-              });
-            }
-              const token = jwt.sign(
-              {
-                userId: user._id,
-                userEmail: user.email,
-              },
-              secretKey,
-              { expiresIn: '24h' }
-            );
-              response.status(200).send({
-              message: 'Login Successful',
-              email: user.email,
-              token,
-            });
-          })
-          .catch((error) => {
-            response.status(400).send({
-              message: 'Passwords do not match',
+const userLogin = (request, response) => {
+  User.findOne({ email: request.body.email })
+    .then((user) => {
+      bcrypt
+        .compare(request.body.password, user.password)
+        .then((passwordCheck) => {
+          if (!passwordCheck) {
+            return response.status(400).send({
+              message: "Passwords do not match",
               error,
             });
+          }
+          const token = jwt.sign(
+            {
+              userId: user._id,
+              userEmail: user.email,
+            },
+            secretKey,
+            { expiresIn: "24h" }
+          );
+          response.status(200).send({
+            message: "Login Successful",
+            email: user.email,
+            token,
           });
-      })
-      .catch((e) => {
-        response.status(404).send({
-          message: 'Email not found',
-          e,
+        })
+        .catch((error) => {
+          response.status(400).send({
+            message: "Passwords do not match",
+            error,
+          });
         });
+    })
+    .catch((e) => {
+      response.status(404).send({
+        message: "Email not found",
+        e,
       });
-  };
+    });
+};
 
+const addSchool = async (req, res) => {
+  try {
+    const name = req.body.name;
+    const email = req.body.email;
+    const phone = Number(req.body.phone);
+    const item = req.body.item;
+    const quantity = Number(req.body.quantity);
+    const location = req.body.location;
+    const isRequested = true;
 
-module.exports = { userRegister, userVerify, userLogin, generateToken };
+    const newDonor = new MakeDon({
+      name,
+      email,
+      phone,
+      item,
+      quantity,
+      location,
+      isRequested,
+    });
 
+    //when the request is success (response from json format)
+    newDonor.save().then(() => {
+      res.json("Donation added");
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Registration failed" });
+  }
+};
+
+module.exports = {
+  userRegister,
+  userVerify,
+  userLogin,
+  generateToken,
+  addSchool,
+};
 
 /* 
 module.exports.signUp = async(req, res) =>{

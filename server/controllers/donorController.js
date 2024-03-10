@@ -124,6 +124,7 @@ const addDonor = async (req, res) => {
     const item = req.body.item;
     const quantity = Number(req.body.quantity);
     const location = req.body.location;
+    const isRequested = false;
 
     const newDonor = new MakeDon({
       name,
@@ -132,6 +133,7 @@ const addDonor = async (req, res) => {
       item,
       quantity,
       location,
+      isRequested,
     });
 
     //when the request is success (response from json format)
