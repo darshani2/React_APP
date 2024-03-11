@@ -240,6 +240,28 @@
   
 }
 
+.btn-update {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2703aa;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn-delete {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff0101;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;

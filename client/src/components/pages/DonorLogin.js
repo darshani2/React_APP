@@ -38,8 +38,7 @@ function DonorLogin() {
           console.error('Error while fetching user data:', err);
           alert('An error occurred while fetching user data.');
         });
-    
-  }
+    }
 
   return (
     <>
@@ -74,6 +73,7 @@ function DonorLogin() {
               />
               {errors.password && <span className='text-danger'>{errors.password}</span>}
             </div>
+            
             <button type='submit' className='btn'>
               Log in
             </button>

@@ -2,7 +2,7 @@ function Validation(values){
     let error = {}
     const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/
-    const phone_pattern = /^\d{10}$/
+    //const phone_pattern = /^\d{10}$/
 
     if(values.name === ""){
         error.name = "Name should not be empty"
@@ -11,6 +11,7 @@ function Validation(values){
         error.name = ""
     }
 
+   /*
     if(values.phone_num === ""){
         error.phone_num = "Phone number should not be empty"
     }
@@ -20,7 +21,8 @@ function Validation(values){
     else{
         error.phone_num = ""
     }
-
+    */
+   
     if(values.email === ""){
         error.email = "Email should not be empty"
     }

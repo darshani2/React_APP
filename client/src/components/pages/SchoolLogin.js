@@ -7,9 +7,9 @@ import '../../App.css';
 
 function SchoolLogin() {
   const [values, setValues] = useState({
-    phone_num: '',
-    
-  });
+    email: '',
+    password: '',
+ });
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
@@ -29,7 +29,7 @@ function SchoolLogin() {
         .then((res) => {
           if (res.status === 200) {
             setUserData(res.data);
-            navigate('/OtpPage');
+            navigate('/SchoolPage');
           } else {
             alert('Login failed. Check your credentials.');
           }
@@ -48,23 +48,33 @@ function SchoolLogin() {
         <div className='border'>
           <h2>Sign-In</h2>
           <form action='' onSubmit={handleSubmit}>
-
-            
-           
-
-            <div className='mb-3'>
-              <label htmlFor='phone_num'>
-                <strong>Phone number</strong>
+           <div className='mb-3'>
+              <label htmlFor='email'>
+                <strong>Email</strong>
               </label>
-              <input 
-                type='phone_num'
-                placeholder='Enter Phone number'
-                name='phone_num'
+              <input
+                type='email'
+                placeholder='Enter Email'
+                name='email'
                 onChange={handleInput}
                 className='form-control rounded-0'
               />
-              {errors.password && <span className='text-danger'>{errors.phone_num}</span>}
+              {errors.email && <span className='text-danger'>{errors.email}</span>}
             </div>
+            <div className='mb-3'>
+              <label htmlFor='password'>
+                <strong>Password</strong>
+              </label>
+              <input
+                type='password'
+                placeholder='Enter Password'
+                name='password'
+                onChange={handleInput}
+                className='form-control rounded-0'
+              />
+              {errors.password && <span className='text-danger'>{errors.password}</span>}
+            </div>
+            
             <button type='submit' className='btn'>
               Log in
             </button>

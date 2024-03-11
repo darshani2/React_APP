@@ -29,7 +29,7 @@ function Makedon() {
       .then((res) => {
         if (res.status === 200) {
           setUserData(res.data);
-          navigate('/donhis', { state: { data: email } });
+          navigate('/Donhis', { state: { data: email } });
 
         } else {
           alert('Donation was unsuccessful. Check your credentials.');
