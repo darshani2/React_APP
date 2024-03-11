@@ -9,7 +9,7 @@ function SchoolSignup() {
   const [values, setValues] = useState({
     name: '',
     email: '',
-    phone_num: '',
+    password: '',
   });
 
   const navigate = useNavigate();
@@ -74,21 +74,21 @@ function SchoolSignup() {
               />
               {errors.email && <span className="text-danger">{errors.email}</span>}
             </div>
+
             <div className="mb-3">
-  <label htmlFor="phone_num">
-    <strong>Phone Number</strong>
-  </label>
-  <input
-    type="tel"  // Update type to "tel" for telephone numbers
-    pattern="[0-9]{10}"  // Add pattern attribute to allow only 10 numeric digits
-    placeholder="Enter Phone Number"
-    name="phone_num"
-    value={values.phone_num}
-    onChange={handleInput}
-    className="form-control rounded-0"
-  />
-  {errors.phone_num && <span className="text-danger">{errors.phone_num}</span>}
-</div>
+              <label htmlFor="password">
+                <strong>Password</strong>
+              </label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                name="password"
+                value={values.password}
+                onChange={handleInput}
+                className="form-control rounded-0"
+              />
+              {errors.password && <span className="text-danger">{errors.password}</span>}
+            </div>
 
             <button type="submit" className="btn">
               Sign Up

@@ -10,8 +10,7 @@ function AdminNavbar() {
 
   const location = useLocation();
   const isSchoolPage = location.pathname === '/AdminPage'; 
-  const [ setUserData] = useState();
-
+  const [ userData, setUserData] = useState();
   const handleLogout = () => {
 
     axios
@@ -48,7 +47,7 @@ function AdminNavbar() {
             </li>
 
             <li className='nav-item'>
-            <Link to='/donHis' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/donhis' className='nav-links' onClick={closeMobileMenu}>
               Donor Details
             </Link>
           </li>

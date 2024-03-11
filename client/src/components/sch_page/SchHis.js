@@ -17,7 +17,9 @@ function SchHis() {
       <div className="bor">
         <Link to="/makeReq" className="btn1">
           ADD +
-        </Link>
+        </Link> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='DonorPage' className='btn1'>Back</a>
+
         <table className="table">
           <thead>
             <tr>

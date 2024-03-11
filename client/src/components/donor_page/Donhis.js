@@ -37,14 +37,16 @@ function Donhis() {
       <div className="bor">
         <Link to="/makedon" className="btn1">
           ADD +
-        </Link>
+        </Link>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='DonorPage' className='btn1'>Back</a>
+
         <table className="table">
           <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
-              <th>Size of Item</th>
+              <th>Type of Item</th>
               <th>Quantity</th>
               <th>Location</th>
               <th>Action</th>

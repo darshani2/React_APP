@@ -104,11 +104,11 @@ function Makedon() {
 
           <div className="mb-3">
             <label htmlFor="item">
-              <strong>Size Of Item</strong>
+              <strong>Type Of Item</strong>
             </label>
             <input
               type="text"
-              placeholder="size of item"
+              placeholder="Type of item"
               className="form-control"
               name="item"
               onChange={handleInput}
@@ -143,7 +143,16 @@ function Makedon() {
 
           <button type="submit" className="btn">
             Donate
-          </button>
+          </button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='DonorPage' className='btn1'>Back</a>
         </form>
       </div>
     </div>

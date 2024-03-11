@@ -74,6 +74,7 @@ function DonorSignup() {
               />
               {errors.email && <span className="text-danger">{errors.email}</span>}
             </div>
+            
             <div className="mb-3">
               <label htmlFor="password">
                 <strong>Password</strong>

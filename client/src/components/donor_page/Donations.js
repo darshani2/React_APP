@@ -54,7 +54,8 @@ const ItemCard = ({ title, imgSrc }) => {
     <div className="don-box">
       <img src={imgSrc} alt={title}></img>
       <h3>{title}</h3>
-      <a href='makedon' className='btn1'>Donate Now</a>
+      <a href='makedon' className='btn1'>Donate Now</a>  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='DonorPage' className='btn1'>Back</a>
     </div>
   );
 };
