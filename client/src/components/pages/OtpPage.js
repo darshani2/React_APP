@@ -1,3 +1,4 @@
+/*
 import React, { useState } from 'react'; // Remove useEffect if not used
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -75,3 +76,4 @@ function OtpPage() {
 }
 
 export default OtpPage;
+*/

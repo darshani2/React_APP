@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const axios = require("axios");
 //const otpGenerator = require("otp-generator");
 const User = require("../models/school");
-const MakeDon = require("../models/makedon");
+const MakeReq = require("../models/makereq");
 //const Otp = require("../models/otpModels");
 const { sendVerificationEmail } = require("../emailService");
 const { generateToken, secretKey } = require("../authUtils");
@@ -130,7 +130,7 @@ const addSchool = async (req, res) => {
     const location = req.body.location;
     const isRequested = true;
 
-    const newDonor = new MakeDon({
+    const newRequest = new MakeReq({
       name,
       email,
       phone,
@@ -141,12 +141,69 @@ const addSchool = async (req, res) => {
     });
 
     //when the request is success (response from json format)
-    newDonor.save().then(() => {
-      res.json("Donation added");
+    newRequest.save().then(() => {
+      res.json("Request added");
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Registration failed" });
+  }
+};
+
+const getAllSchool = async (req, res) => {
+  try {
+    MakeReq.find().then((schools) => {
+      res.json(schools);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Cannot find" });
+  }
+};
+
+const getSchoolByEmail = async (req, res) => {
+  try {
+    let email = req.query.email;
+    const user = await MakeReq.find({ email }).then((schools) => {
+      res.status(200).send({ status: "schools fetched", schools });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with get school" });
+  }
+};
+
+const deleteSchoolById = async (req, res) => {
+  try {
+    let id = req.body.id;
+    await MakeReq.findByIdAndDelete(id).then(() => {
+      res.status(200).send({ status: "school deleted" });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with delete school" });
+  }
+};
+
+const updateSchoolById = async (req, res) => {
+  try {
+    let id = req.body.id;
+    const { name, email, phone, item, quantity, location } = req.body;
+
+    const updateSchool = {
+      name,
+      email,
+      phone,
+      item,
+      quantity,
+      location,
+    };
+    const update = await MakeReq.findByIdAndUpdate(id, updateSchool).then(() => {
+      res.status(200).send({ status: "User Updated" });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error with updating school" });
   }
 };
 
@@ -156,6 +213,11 @@ module.exports = {
   userLogin,
   generateToken,
   addSchool,
+  getAllSchool,
+  getSchoolByEmail,
+  deleteSchoolById,
+  updateSchoolById,
+
 };
 
 /* 

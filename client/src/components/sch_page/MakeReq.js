@@ -1,73 +1,162 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
 
 function MakeReq() {
-    const[name,setName] = useState()
-    const[email,setEmail] = useState()
-    const[quantity,setQuantity] = useState()
-    const[phone,setPhone] = useState()
-    const[item,setSize] = useState()
-    const[location,setLocation] = useState()
-    const navigate = useNavigate()
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    item: '',
+    quantity: '',
+    location: '',
+  });
 
-    const Donate = (e) =>{
-        e.preventDefault();
-        axios.post('http://localhost:8081/user/makereq', {name,email,quantity,phone,item, location})
-        .then(result => {
-            console.log(result)
-        })
-        .catch(err => console.log(err))
-        navigate('/')
-    }
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [userData, setUserData] = useState(null);
 
-    return (
-        <div className='schPage'>
-            <div className='border'>
-                <form onSubmit={Donate}>
-                    <h2>Make a Request</h2>
-                    <div className='mb-3'>
-                        <label htmlFor='name'><strong>School Name</strong></label>
-                        <input type='text' placeholder='Enter Name' className='form-control'
-                        onChange={(e) => setName(e.target.value)} />
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='email'><strong> School Email</strong></label>
-                        <input type='email' placeholder='Enter Email' className='form-control' 
-                        onChange={(e) => setEmail(e.target.value)}/>
-                    </div>
-                    
-                    <div className='mb-3'>
-                        <label htmlFor='phone'><strong>Phone number</strong></label>
-                        <input type='text' placeholder='Enter Phone' className='form-control' 
-                        onChange={(e) => setPhone(e.target.value)} />
-                    </div>
+  const handleInput = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
 
-                     <div className='mb-3'>
-                        <label htmlFor='item'><strong>Size Of Item</strong></label>
-                        <input type='text' placeholder='Enter size' className='form-control' 
-                        onChange={(e) => setSize(e.target.value)}/>
-                    </div>
-                
-                    <div className='mb-3'>
-                        <label htmlFor='quantity'><strong>Quantity</strong></label>
-                        <input type='text' placeholder='Enter Quantity' className='form-control' 
-                        onChange={(e) => setQuantity(e.target.value)}/>
-                    </div>
-                    
-                    
-                    <div className='mb-3'>
-                        <label htmlFor='location'><strong>Location</strong></label>
-                        <input type='text' placeholder='Enter Location' className='form-control' 
-                        onChange={(e) => setLocation(e.target.value)}/>
-                    </div>
-                    <Link to="/schHis" className="btn1"> Submit </Link>
-                </form>
-            </div>
-        </div>
-    );
+  const email = values.email;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post('http://localhost:8081/user/school/add', values)
+
+      .then((res) => {
+        if (res.status === 200) {
+          setUserData(res.data);
+          navigate('/SchHis', { state: { data: email } });
+
+        } else {
+          alert('Requesters was unsuccessful. Check your credentials.');
+        }
+      })
+      .catch((err) => {
+        console.error('Error while fetching user data:', err);
+        alert('An error occurred while fetching user data.');
+      });
+    /*
+         axios
+          .get('http://localhost:8081/user/donor/get', values)
+          .then((res) => {
+            if (res.status === 200) {
+              setUserData(res.data);
+              navigate('/donhis');
+            } else {
+              alert('Donation was unsuccessful. Check your credentials.');
+            }
+          })
+          .catch((err) => {
+            console.error('Error while fetching user data:', err);
+            alert('An error occurred while fetching user data.');
+          });*/
+
+  };
+
+  return (
+    <div className="schPage">
+      <div className="border">
+        <form action="" onSubmit={handleSubmit}>
+          <h2>Make Request</h2>
+
+          <div className="mb-3">
+            <label htmlFor="name">
+              <strong>School Name</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter School Name"
+              className="form-control"
+              name="name"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="email">
+              <strong>School Email Address</strong>
+            </label>
+            <input
+              type="email"
+              placeholder="Enter Email Address"
+              className="form-control"
+              name="email"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="phone">
+              <strong>Phone Number</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Phone Number"
+              className="form-control"
+              name="phone"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="item">
+              <strong>Type Of Item</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Type of item"
+              className="form-control"
+              name="item"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="quantity">
+              <strong>Quantity</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Quantity"
+              className="form-control"
+              name="quantity"
+              onChange={handleInput}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="location">
+              <strong>Location</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter location"
+              className="form-control"
+              name="location"
+              onChange={handleInput}
+            />
+          </div>
+
+          <button type="submit" className="btn">
+            Request
+          </button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href='SchoolPage' className='btn1'>Back</a>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default MakeReq;
-
