@@ -1,26 +1,21 @@
 import axios from 'axios';
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 alias from uuid
+import { Link } from 'react-router-dom';
 import '../../App.css';
 import { useLocation } from 'react-router-dom';
 
 function Donhis() {
   const { state } = useLocation();
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   const email = state.data;
   useEffect(() => {
-    /*
-  axios.get('http://localhost:8081/user/makedonation')
-  .then(result => setUsers(result.data))
-  .catch(err => console.log(err))
-  */
     axios
       .get(`http://localhost:8081/user/donor/get?email=${email}`)
       .then((res) => {
         if (res.status === 200) {
           setUsers(res.data.donors);
-          console.log(res)
         } else {
           alert('Network error.');
         }
@@ -29,8 +24,50 @@ function Donhis() {
         console.error('Error while fetching donation data:', err);
         alert('An error occurred while fetching donation data.');
       });
+  }, []);
 
-  }, [])
+  const handleUpdate = (userId, updatedData) => {
+  // Assuming userId is the identifier for the user you want to update
+  axios
+    .put(`http://localhost:8081/user/donor/update/${userId}`, updatedData)
+    .then((res) => {
+      if (res.status === 200) {
+        alert(`User with ID ${userId} updated successfully`);
+        // Optionally, you can update the users state to reflect the changes
+        //setUsers(users.map(user => user.userId === userId ? res.data.updatedUser : user));
+      } else {
+        alert('Update was unsuccessful. Check your credentials.');
+      }
+    })
+    .catch((err) => {
+      console.error('Error while updating user:', err);
+      alert('An error occurred while updating user.');
+    });
+};
+
+ const handleDelete = (userId) => {
+  // Assuming userId is the identifier for the user you want to delete
+  axios
+    .delete(`http://localhost:8081/user/donor/delete/${userId}`)
+    .then((res) => {
+      if (res.status === 200) {
+        alert(`User with ID ${userId} deleted successfully`);
+        // Optionally, you can update the users state to reflect the changes
+        //setUsers(users.filter(user => user.userId !== userId));
+      } else {
+        alert('Deletion was unsuccessful. Check your credentials.');
+      }
+    })
+    .catch((err) => {
+      console.error('Error while deleting user:', err);
+      alert('An error occurred while deleting user.');
+    });
+};
+
+  // Function to generate a new UUID
+  const generateUUID = () => {
+    return uuidv4();
+  };
 
   return (
     <div className="donhis">
@@ -38,11 +75,12 @@ function Donhis() {
         <Link to="/makedon" className="btn1">
           ADD +
         </Link>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href='DonorPage' className='btn1'>Back</a>
+        <a href='DonorPage' className='btn1'>Back</a>
 
         <table className="table">
           <thead>
             <tr>
+              <th>User_ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
@@ -56,19 +94,24 @@ function Donhis() {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
+                  <td>{user.userId || generateUUID()}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td>{user.item}</td>
                   <td>{user.quantity}</td>
                   <td>{user.location}</td>
-
-                  <Link to="/donate" className="btn1"> Donate </Link>
+                  <td>
+                    <button onClick={() => handleUpdate(user.userId || generateUUID())} className="btn-update">Update</button>
+                    <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+       
+
       </div>
     </div>
   );
