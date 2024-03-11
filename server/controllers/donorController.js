@@ -159,7 +159,7 @@ const getAllDonor = async (req, res) => {
 
 const getDonorByEmail = async (req, res) => {
   try {
-    let email = req.body.email;
+    let email = req.query.email;
     const user = await MakeDon.find({ email }).then((donors) => {
       res.status(200).send({ status: "donors fetched", donors });
     });

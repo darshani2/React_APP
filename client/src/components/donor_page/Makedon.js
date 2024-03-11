@@ -20,17 +20,17 @@ function Makedon() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
+  const email = values.email;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post('http://localhost:8081/user/donor/add', values)
-      
+
       .then((res) => {
         if (res.status === 200) {
           setUserData(res.data);
-          console.log('email')
-          navigate('/donhis', { state: { data: 'email' } });
-          
+          navigate('/donhis', { state: { data: email } });
+
         } else {
           alert('Donation was unsuccessful. Check your credentials.');
         }
@@ -39,23 +39,23 @@ function Makedon() {
         console.error('Error while fetching user data:', err);
         alert('An error occurred while fetching user data.');
       });
-/*
-     axios
-      .get('http://localhost:8081/user/donor/get', values)
-      .then((res) => {
-        if (res.status === 200) {
-          setUserData(res.data);
-          navigate('/donhis');
-        } else {
-          alert('Donation was unsuccessful. Check your credentials.');
-        }
-      })
-      .catch((err) => {
-        console.error('Error while fetching user data:', err);
-        alert('An error occurred while fetching user data.');
-      });*/
+    /*
+         axios
+          .get('http://localhost:8081/user/donor/get', values)
+          .then((res) => {
+            if (res.status === 200) {
+              setUserData(res.data);
+              navigate('/donhis');
+            } else {
+              alert('Donation was unsuccessful. Check your credentials.');
+            }
+          })
+          .catch((err) => {
+            console.error('Error while fetching user data:', err);
+            alert('An error occurred while fetching user data.');
+          });*/
 
-    };
+  };
 
   return (
     <div className="donPage">
