@@ -33,7 +33,7 @@ function Donhis() {
     .then((res) => {
       if (res.status === 200) {
         alert(`User with ID ${userId} updated successfully`);
-        // Optionally, you can update the users state to reflect the changes
+        
         //setUsers(users.map(user => user.userId === userId ? res.data.updatedUser : user));
       } else {
         alert('Update was unsuccessful. Check your credentials.');
@@ -102,7 +102,8 @@ function Donhis() {
                   <td>{user.quantity}</td>
                   <td>{user.location}</td>
                   <td>
-                    <button onClick={() => handleUpdate(user.userId || generateUUID())} className="btn-update">Update</button>
+                    <Link to={`/update/${user.userId || generateUUID()}`} className="btn-update">Update</Link>
+
                     <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
                   </td>
                 </tr>

@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors(
-  {origin: 'http://localhost:3000',methods: ['GET', 'POST'],optionsSuccessStatus: 204,
+  {origin: 'http://localhost:3000',methods: ['GET', 'POST', , 'PUT', 'DELETE'],optionsSuccessStatus: 204,
   })
 );
 
@@ -45,6 +45,57 @@ app.get('/test', (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
     });
 });
+
+// Enable CORS for all routes
+//app.use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE'] }));
+
+
+
+app.delete('/delete/:userId', (req, res) => {
+    const userId = req.params.userId;
+    UserModel.deleteDonorById({_id: userId})
+    .then(response => res.json(response))
+    .catch(err => res.json(err))
+});
+
+app.put('/update/:userId', (req, res) => {
+    const userId = req.params.userId;
+    UserModel.updateDonorById({_id: userId}, {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        item: req.body.item,
+        quantity: req.body.quantity,
+        location: req.body.location,
+
+        
+    }).then(user => res.json(user))
+    .catch(err => res.json(err))
+});
+
+app.delete('/delete/:userId', (req, res) => {
+    const userId = req.params.userId;
+    UserModel.deleteSchoolById({_id: userId})
+    .then(response => res.json(response))
+    .catch(err => res.json(err))
+});
+
+app.put('/update/:userId', (req, res) => {
+    const userId = req.params.userId;
+    UserModel.updateSchoolById({_id: userId}, {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        item: req.body.item,
+        quantity: req.body.quantity,
+        location: req.body.location,
+
+        
+    }).then(user => res.json(user))
+    .catch(err => res.json(err))
+});
+
+
 
 
 app.listen(8081, () => {
