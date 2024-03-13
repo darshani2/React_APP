@@ -28,6 +28,7 @@ import Donhis from './components/donor_page/Donhis';
 import Donations from './components/donor_page/Donations';
 import Requesters from './components/sch_page/Requesters';
 import SchHis from './components/sch_page/SchHis';
+import DonUpdate from './components/donor_page/DonUpdate';
 
 
 
@@ -69,6 +70,7 @@ function App() {
           <Route path='/SchHis' element={<SchHis />} />
           <Route path='/Donations' element={<Donations />} />
           <Route path='/Requesters' element={<Requesters />} />
+          <Route path='/DonUpdate' element={<DonUpdate />} />
           <Route path="/tests" element={<Test/>} />
         </Routes>
         <Footer />

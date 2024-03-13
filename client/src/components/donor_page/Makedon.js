@@ -91,7 +91,7 @@ function Makedon() {
 
           <div className="mb-3">
             <label htmlFor="phone">
-              <strong>Phone number</strong>
+              <strong>Phone Number</strong>
             </label>
             <input
               type="text"
