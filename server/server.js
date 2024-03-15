@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors(
-  {origin: 'http://localhost:3000',methods: ['GET', 'POST', , 'PUT', 'DELETE'],optionsSuccessStatus: 204,
+  {origin: 'http://localhost:3000',methods: ['GET', 'POST'],optionsSuccessStatus: 204,
   })
 );
 
@@ -50,7 +50,7 @@ app.get('/test', (req, res) => {
 //app.use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE'] }));
 
 
-
+/*
 app.delete('/delete/:userId', (req, res) => {
     const userId = req.params.userId;
     UserModel.deleteDonorById({_id: userId})
@@ -95,7 +95,7 @@ app.put('/update/:userId', (req, res) => {
     .catch(err => res.json(err))
 });
 
-
+*/
 
 
 app.listen(8081, () => {

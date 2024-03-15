@@ -25,10 +25,14 @@ import Verification from './components/Verification';
 import Test from './components/Test'
 import PreVerification from './components/preverification';
 import Donhis from './components/donor_page/Donhis';
+
 import Donations from './components/donor_page/Donations';
 import Requesters from './components/sch_page/Requesters';
 import SchHis from './components/sch_page/SchHis';
 import DonUpdate from './components/donor_page/DonUpdate';
+import SchUpdate from './components/sch_page/SchUpdate';
+
+
 
 
 
@@ -49,7 +53,7 @@ function App() {
           <Route path='/DonorLogin' element={<DonorLogin/>} />
           <Route path='/AdminLogin' element={<AdminLogin/>} />
           <Route path='/SchoolLogin' element={<SchoolLogin/>} />
-          <Route path='/OtpPage' element={<OtpPage/>} />
+          
 
           <Route path='/SchoolPage' element={<SchoolPage />} />
           <Route path='/AdminPage' element={<AdminPage/>} />
@@ -71,6 +75,9 @@ function App() {
           <Route path='/Donations' element={<Donations />} />
           <Route path='/Requesters' element={<Requesters />} />
           <Route path='/DonUpdate' element={<DonUpdate />} />
+          <Route path='/SchUpdate' element={<SchUpdate />} />
+          
+
           <Route path="/tests" element={<Test/>} />
         </Routes>
         <Footer />
