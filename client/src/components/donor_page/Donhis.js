@@ -1,68 +1,48 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 alias from uuid
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../App.css';
-import { useLocation } from 'react-router-dom';
 
 function Donhis() {
   const { state } = useLocation();
+  const email = state?.data;
   const [users, setUsers] = useState([]);
 
-  const email = state.data;
   useEffect(() => {
+    if (email) {
+      axios
+        .get(`http://localhost:8081/user/donor/get?email=${email}`)
+        .then((res) => {
+          if (res.status === 200) {
+            setUsers(res.data.donors);
+          } else {
+            alert('Network error.');
+          }
+        })
+        .catch((err) => {
+          console.error('Error while fetching donation data:', err);
+          alert('An error occurred while fetching donation data.');
+        });
+    }
+  }, [email]);
+
+  const handleDelete = (userId) => {
     axios
-      .get(`http://localhost:8081/user/donor/get?email=${email}`)
+      .delete(`http://localhost:8081/user/donor/delete/${userId}`)
       .then((res) => {
         if (res.status === 200) {
-          setUsers(res.data.donors);
+          alert(`User with ID ${userId} deleted successfully`);
+          setUsers(users.filter(user => user.userId !== userId));
         } else {
-          alert('Network error.');
+          alert('Deletion was unsuccessful. Check your credentials.');
         }
       })
       .catch((err) => {
-        console.error('Error while fetching donation data:', err);
-        alert('An error occurred while fetching donation data.');
+        console.error('Error while deleting user:', err);
+        alert('An error occurred while deleting user.');
       });
-  }, []);
-
-  const handleUpdate = (userId, updatedData) => {
-  // Assuming userId is the identifier for the user you want to update
-  axios
-    .put(`http://localhost:8081/user/donor/update/${userId}`, updatedData)
-    .then((res) => {
-      if (res.status === 200) {
-        alert(`User with ID ${userId} updated successfully`);
-        
-        //setUsers(users.map(user => user.userId === userId ? res.data.updatedUser : user));
-      } else {
-        alert('Update was unsuccessful. Check your credentials.');
-      }
-    })
-    .catch((err) => {
-      console.error('Error while updating user:', err);
-      alert('An error occurred while updating user.');
-    });
-};
-
- const handleDelete = (userId) => {
-  // Assuming userId is the identifier for the user you want to delete
-  axios
-    .delete(`http://localhost:8081/user/donor/delete/${userId}`)
-    .then((res) => {
-      if (res.status === 200) {
-        alert(`User with ID ${userId} deleted successfully`);
-        // Optionally, you can update the users state to reflect the changes
-        //setUsers(users.filter(user => user.userId !== userId));
-      } else {
-        alert('Deletion was unsuccessful. Check your credentials.');
-      }
-    })
-    .catch((err) => {
-      console.error('Error while deleting user:', err);
-      alert('An error occurred while deleting user.');
-    });
-};
+  };
 
   // Function to generate a new UUID
   const generateUUID = () => {
@@ -103,7 +83,6 @@ function Donhis() {
                   <td>{user.location}</td>
                   <td>
                     <Link to={`/update/${user.userId || generateUUID()}`} className="btn-update">Update</Link>
-
                     <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
                   </td>
                 </tr>
@@ -111,8 +90,6 @@ function Donhis() {
             })}
           </tbody>
         </table>
-       
-
       </div>
     </div>
   );

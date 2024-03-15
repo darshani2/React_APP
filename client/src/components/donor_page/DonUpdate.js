@@ -48,7 +48,7 @@ function DonUpdate() {
     <div className="donUpdate">
       <div className="border">
         <form onSubmit={handleUpdate}>
-          <h2>Update User</h2>
+          <h2>Update Donor</h2>
           <table>
             <tbody>
               <tr>
