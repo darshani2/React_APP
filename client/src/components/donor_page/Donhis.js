@@ -74,7 +74,7 @@ function Donhis() {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.userId || generateUUID()}</td>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
@@ -82,7 +82,7 @@ function Donhis() {
                   <td>{user.quantity}</td>
                   <td>{user.location}</td>
                   <td>
-                    <Link to={`/update/${user.userId || generateUUID()}`} className="btn-update">Update</Link>
+                    <Link to={`/DonUpdate/?id=${user._id}&name=${user.name}&email=${user.email}&phone=${user.phone}&item=${user.item}&quantity=${user.quantity}&location=${user.location}`} className="btn-update">Update</Link>
                     <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
                   </td>
                 </tr>

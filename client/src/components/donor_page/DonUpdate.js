@@ -2,52 +2,94 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function DonUpdate() {
-  const { id } = useParams();
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [item, setItem] = useState();
-  const [quantity, setQuantity] = useState();
-  const [location, setLocation] = useState();
+  const queryParams = new URLSearchParams(window.location.search);
+  const oldId = queryParams.get('id');
+  const oldName = queryParams.get('name');
+  const oldEmail = queryParams.get('email');
+  const oldPhone = queryParams.get('phone');
+  const oldItem = queryParams.get('item');
+  const oldQuantity = queryParams.get('quantity');
+  const oldLocation = queryParams.get('location');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:8081/user/donor/get?userId=${userId}');
-        console.log(response);
-        setName(response.data.name);
-        setEmail(response.data.email);
-        setPhone(response.data.phone);
-        setItem(response.data.item);
-        setQuantity(response.data.quantity);
-        setLocation(response.data.location);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchData();
-  }, []);
+  // const { id } = useParams();
+
+  const [name, setName] = useState(oldName);
+  const setNewName = (oldName) => {
+    setName(oldName);
+  }
+  const [email, setEmail] = useState(oldEmail);
+  const setNewEmail = (oldEmail) => {
+    setEmail(oldEmail);
+  }
+  const [phone, setPhone] = useState(oldPhone);
+  const setNewPhone = (oldPhone) => {
+    setPhone(oldPhone);
+  }
+  const [item, setItem] = useState(oldItem);
+  const setNewItem = (oldItem) => {
+    setItem(oldItem);
+  }
+  const [quantity, setQuantity] = useState(oldQuantity);
+  const setNewQuantity = (oldQuantity) => {
+    setQuantity(oldQuantity);
+  }
+  const [location, setLocation] = useState(oldLocation);
+  const setNewLocation = (oldLocation) => {
+    setLocation(oldLocation);
+  }
 
   const navigate = useNavigate();
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  // const handleUpdate = async (oldId) => {
+  //   console.log(oldId)
+  //   axios
+  //     .put(`http://localhost:8081/user/donor/update?id=${oldId}`, {
+  //       "name": name,
+  //       "email": email,
+  //       "phone": phone,
+  //       "item": item,
+  //       "quantity": quantity,
+  //       "location": location
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       navigate("/Makedon");
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+  const handleUpdate = async (oldId) => {
     axios
-      .put("http://localhost:8081/user/donor/update/" + id, { name, email, phone, item, quantity, location })
-      .then((res) => {
-        console.log(res);
-        navigate("/");
+      .put(`http://localhost:8081/user/donor/update?id=${oldId}`, {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "item": item,
+        "quantity": quantity,
+        "location": location
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/Makedon");
+        } else {
+          alert('Network error.');
+        }
+      })
+      .catch((err) => {
+        console.error('Error while updating donation data:', err);
+        alert('An error occurred while updating donation data.');
+      });
+
   };
 
   return (
     <div className="donUpdate">
       <div className="border">
-        <form onSubmit={handleUpdate}>
+        <form>
           <h2>Update Donor</h2>
           <table>
             <tbody>
@@ -60,8 +102,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Name"
                     className="form-control"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={oldName}
+                    onInput={(e) => setNewName(e.target.value)}
                   />
                 </td>
               </tr>
@@ -74,8 +116,8 @@ function DonUpdate() {
                     type="email"
                     placeholder="Enter Email"
                     className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={oldEmail}
+                    onInput={(e) => setNewEmail(e.target.value)}
                   />
                 </td>
               </tr>
@@ -88,8 +130,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Phone"
                     className="form-control"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={oldPhone}
+                    onInput={(e) => setNewPhone(e.target.value)}
                   />
                 </td>
               </tr>
@@ -102,8 +144,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Type of item"
                     className="form-control"
-                    value={item}
-                    onChange={(e) => setItem(e.target.value)}
+                    value={oldItem}
+                    onChange={(e) => setNewItem(e.target.value)}
                   />
                 </td>
               </tr>
@@ -116,8 +158,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Quantity"
                     className="form-control"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
+                    value={oldQuantity}
+                    onChange={(e) => setNewQuantity(e.target.value)}
                   />
                 </td>
               </tr>
@@ -130,15 +172,15 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter location"
                     className="form-control"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    value={oldLocation}
+                    onChange={(e) => setNewLocation(e.target.value)}
                   />
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <button className="btn1">Update</button>
+          <button className="btn1" onClick={() => handleUpdate(oldId)}>Update</button>
         </form>
       </div>
     </div>

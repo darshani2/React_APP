@@ -171,7 +171,7 @@ const getDonorByEmail = async (req, res) => {
 
 const deleteDonorById = async (req, res) => {
   try {
-    let id = req.body.id;
+    let id = req.query.id;
     await MakeDon.findByIdAndDelete(id).then(() => {
       res.status(200).send({ status: "donor deleted" });
     });
@@ -183,7 +183,7 @@ const deleteDonorById = async (req, res) => {
 
 const updateDonorById = async (req, res) => {
   try {
-    let id = req.body.id;
+    let id = req.params.id;
     const { name, email, phone, item, quantity, location } = req.body;
 
     const updateDonor = {
