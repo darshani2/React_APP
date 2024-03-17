@@ -33,7 +33,7 @@ function OtpPage() {
       .then((res) => {
         if (res.status === 200) {
           // Assuming res.data contains necessary information
-          navigate('/SchoolPage');
+          navigate('/SchoolLogin');
         } else {
           alert('Login failed. Check your credentials.');
         }

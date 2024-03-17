@@ -10,6 +10,7 @@ function SchoolSignup() {
     name: '',
     email: '',
     password: '',
+    number: '',
     
   });
 
@@ -24,7 +25,7 @@ function SchoolSignup() {
     event.preventDefault();
     setErrors(Validation(values));
 
-    if (!errors.name && !errors.email && !errors.password) {
+    if (!errors.name && !errors.email && !errors.password && !errors.number) {
       try {
         // Send a POST request to your server to register the user
         const response = await axios.post('http://localhost:8081/user/school/register', values);
@@ -91,13 +92,28 @@ function SchoolSignup() {
               {errors.password && <span className="text-danger">{errors.password}</span>}
             </div>
 
-            <button type="submit" className="btn">
+             <div className="mb-3">
+              <label htmlFor="number">
+                <strong>Phone Number</strong>
+              </label>
+              <input
+                type="number"
+                placeholder="Enter Phone Number"
+                name="number"
+                value={values.number}
+                onChange={handleInput}
+                className="form-control rounded-0"
+              />
+              {errors.number && <span className="text-danger">{errors.number}</span>}
+            </div>
+
+             <button type="submit" className="btn">
               Sign Up
             </button>
             <div className="phg">
               <p>Already have an account ? </p>
             </div>
-            <Link to="/SchoolLogin" className="btn btn--block">
+            <Link to="/DonorLogin" className="btn btn--block">
               Login
             </Link>
           </form>
