@@ -29,7 +29,7 @@ function Donhis() {
 
   const handleDelete = (userId) => {
     axios
-      .delete(`http://localhost:8081/user/donor/delete/${userId}`)
+      .delete(`http://localhost:8081/user/donor/delete/?id=${userId}`)
       .then((res) => {
         if (res.status === 200) {
           alert(`User with ID ${userId} deleted successfully`);
@@ -83,7 +83,7 @@ function Donhis() {
                   <td>{user.location}</td>
                   <td>
                     <Link to={`/DonUpdate/?id=${user._id}&name=${user.name}&email=${user.email}&phone=${user.phone}&item=${user.item}&quantity=${user.quantity}&location=${user.location}`} className="btn-update">Update</Link>
-                    <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
+                    <button onClick={() => handleDelete(user._id)} className="btn-delete">Delete</button>
                   </td>
                 </tr>
               );

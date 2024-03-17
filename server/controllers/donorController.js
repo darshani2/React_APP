@@ -183,9 +183,8 @@ const deleteDonorById = async (req, res) => {
 
 const updateDonorById = async (req, res) => {
   try {
-    let id = req.params.id;
-    const { name, email, phone, item, quantity, location } = req.body;
-
+    const { id, name, email, phone, item, quantity, location } = req.body;
+    let isRequested = false;
     const updateDonor = {
       name,
       email,
@@ -193,15 +192,21 @@ const updateDonorById = async (req, res) => {
       item,
       quantity,
       location,
+      isRequested
     };
-    const update = await MakeDon.findByIdAndUpdate(id, updateDonor).then(() => {
-      res.status(200).send({ status: "User Updated" });
-    });
+    // // Use findByIdAndUpdate to find the document by _id and update it
+    const updatedDonor = await MakeDon.findByIdAndUpdate(id, updateDonor, { new: true });
+
+    if (!updatedDonor) {
+      return res.status(404).send({ status: "No document found to update" });
+    }
+    res.status(200).send({ status: "User Updated" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error with updating donor" });
   }
 };
+
 
 module.exports = {
   userRegister,

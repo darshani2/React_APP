@@ -1,70 +1,26 @@
 // C:\react-js\my-app\src\components\UpdateUser.js
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DonUpdate() {
 
   const queryParams = new URLSearchParams(window.location.search);
   const oldId = queryParams.get('id');
-  const oldName = queryParams.get('name');
-  const oldEmail = queryParams.get('email');
-  const oldPhone = queryParams.get('phone');
-  const oldItem = queryParams.get('item');
-  const oldQuantity = queryParams.get('quantity');
-  const oldLocation = queryParams.get('location');
 
-  // const { id } = useParams();
-
-  const [name, setName] = useState(oldName);
-  const setNewName = (oldName) => {
-    setName(oldName);
-  }
-  const [email, setEmail] = useState(oldEmail);
-  const setNewEmail = (oldEmail) => {
-    setEmail(oldEmail);
-  }
-  const [phone, setPhone] = useState(oldPhone);
-  const setNewPhone = (oldPhone) => {
-    setPhone(oldPhone);
-  }
-  const [item, setItem] = useState(oldItem);
-  const setNewItem = (oldItem) => {
-    setItem(oldItem);
-  }
-  const [quantity, setQuantity] = useState(oldQuantity);
-  const setNewQuantity = (oldQuantity) => {
-    setQuantity(oldQuantity);
-  }
-  const [location, setLocation] = useState(oldLocation);
-  const setNewLocation = (oldLocation) => {
-    setLocation(oldLocation);
-  }
-
+  const [name, setNewName] = useState(queryParams.get('name') || '');
+  const [email, setNewEmail] = useState(queryParams.get('email') || '');
+  const [phone, setNewPhone] = useState(queryParams.get('phone') || '');
+  const [item, setNewItem] = useState(queryParams.get('item') || '');
+  const [quantity, setNewQuantity] = useState(queryParams.get('quantity') || '');
+  const [location, setNewLocation] = useState(queryParams.get('location') || '');
   const navigate = useNavigate();
 
-  // const handleUpdate = async (oldId) => {
-  //   console.log(oldId)
-  //   axios
-  //     .put(`http://localhost:8081/user/donor/update?id=${oldId}`, {
-  //       "name": name,
-  //       "email": email,
-  //       "phone": phone,
-  //       "item": item,
-  //       "quantity": quantity,
-  //       "location": location
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //       navigate("/Makedon");
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  const handleUpdate = async (oldId) => {
+  const handleUpdate = async (e) => {
+    e.preventDefault()
     axios
-      .put(`http://localhost:8081/user/donor/update?id=${oldId}`, {
+      .put(`http://localhost:8081/user/donor/update`, {
+        "id": oldId,
         "name": name,
         "email": email,
         "phone": phone,
@@ -102,8 +58,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Name"
                     className="form-control"
-                    value={oldName}
-                    onInput={(e) => setNewName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setNewName(e.target.value)}
                   />
                 </td>
               </tr>
@@ -116,8 +72,8 @@ function DonUpdate() {
                     type="email"
                     placeholder="Enter Email"
                     className="form-control"
-                    value={oldEmail}
-                    onInput={(e) => setNewEmail(e.target.value)}
+                    value={email}
+                    onChange={(e) => setNewEmail(e.target.value)}
                   />
                 </td>
               </tr>
@@ -130,8 +86,8 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Phone"
                     className="form-control"
-                    value={oldPhone}
-                    onInput={(e) => setNewPhone(e.target.value)}
+                    value={phone}
+                    onChange={(e) => setNewPhone(e.target.value)}
                   />
                 </td>
               </tr>
@@ -144,7 +100,7 @@ function DonUpdate() {
                     type="text"
                     placeholder="Type of item"
                     className="form-control"
-                    value={oldItem}
+                    value={item}
                     onChange={(e) => setNewItem(e.target.value)}
                   />
                 </td>
@@ -158,7 +114,7 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter Quantity"
                     className="form-control"
-                    value={oldQuantity}
+                    value={quantity}
                     onChange={(e) => setNewQuantity(e.target.value)}
                   />
                 </td>
@@ -172,7 +128,7 @@ function DonUpdate() {
                     type="text"
                     placeholder="Enter location"
                     className="form-control"
-                    value={oldLocation}
+                    value={location}
                     onChange={(e) => setNewLocation(e.target.value)}
                   />
                 </td>
@@ -180,7 +136,7 @@ function DonUpdate() {
             </tbody>
           </table>
 
-          <button className="btn1" onClick={() => handleUpdate(oldId)}>Update</button>
+          <button type="submit" className="btn1" onClick={(e) => handleUpdate(e)}>Update</button>
         </form>
       </div>
     </div>
