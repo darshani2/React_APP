@@ -33,11 +33,6 @@ import DonUpdate from './components/donor_page/DonUpdate';
 import SchUpdate from './components/sch_page/SchUpdate';
 
 
-
-
-
-
-
 function App() {
   return (
     <Router>
@@ -49,6 +44,8 @@ function App() {
           <Route path='/AdminSignup' element={<AdminSignup/>} />
           <Route path='/DonorSignup' element={<DonorSignup/>} />
           <Route path='/SchoolSignup' element={<SchoolSignup/>} />
+          <Route path='/OtpPage' element={<OtpPage/>} />
+
 
           <Route path='/DonorLogin' element={<DonorLogin/>} />
           <Route path='/AdminLogin' element={<AdminLogin/>} />

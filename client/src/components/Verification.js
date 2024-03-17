@@ -38,7 +38,7 @@ function Verification() {
                       ? 'AdminPage'
                       : userRole === 'donor'
                       ? 'DonorPage'
-                      : 'SchoolPage'
+                      : 'OtpPage'
                   }`
                 );
               }, 2000);

@@ -59,14 +59,8 @@ function SchNavbar() {
               Make Request
             </Link>
           </li>
-
-          <li className='nav-item'>
-            <Link to='/schHis' className='nav-links' onClick={closeMobileMenu}>
-              Received Donations
-            </Link>
-          </li>
       
-       <li className='nav-item'>
+        <li className='nav-item'>
               <Link className='nav-links' onClick={handleLogout}>
                 Logout
               </Link>
