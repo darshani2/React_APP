@@ -10,6 +10,7 @@ function SchoolSignup() {
     name: '',
     email: '',
     password: '',
+    
   });
 
   const navigate = useNavigate();
@@ -23,13 +24,13 @@ function SchoolSignup() {
     event.preventDefault();
     setErrors(Validation(values));
 
-    if (!errors.name && !errors.email && !errors.number) {
+    if (!errors.name && !errors.email && !errors.password) {
       try {
         // Send a POST request to your server to register the user
         const response = await axios.post('http://localhost:8081/user/school/register', values);
 
         if (response.status === 201) {
-          navigate('/preverify');
+          navigate('/OtpPage');
         } else {
           console.log('Registration failed:', response.data.message);
         }

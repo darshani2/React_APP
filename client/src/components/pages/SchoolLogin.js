@@ -9,7 +9,7 @@ function SchoolLogin() {
   const [values, setValues] = useState({
     email: '',
     password: '',
- });
+  });
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
@@ -48,7 +48,7 @@ function SchoolLogin() {
         <div className='border'>
           <h2>Sign-In</h2>
           <form action='' onSubmit={handleSubmit}>
-           <div className='mb-3'>
+            <div className='mb-3'>
               <label htmlFor='email'>
                 <strong>Email</strong>
               </label>
@@ -65,7 +65,7 @@ function SchoolLogin() {
               <label htmlFor='password'>
                 <strong>Password</strong>
               </label>
-              <input
+              <input 
                 type='password'
                 placeholder='Enter Password'
                 name='password'
@@ -74,7 +74,6 @@ function SchoolLogin() {
               />
               {errors.password && <span className='text-danger'>{errors.password}</span>}
             </div>
-            
             <button type='submit' className='btn'>
               Log in
             </button>

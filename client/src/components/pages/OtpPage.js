@@ -1,4 +1,4 @@
-/*
+
 import React, { useState } from 'react'; // Remove useEffect if not used
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -50,6 +50,8 @@ function OtpPage() {
       <div className='otpPage'>
         <div className='border'>
           <h2>Please Enter Your OTP Here</h2>
+          <h3>We Send OTP Your Phone Number</h3>
+
           <form action='' onSubmit={handleSubmit}>
             <div className='mb-3'>
               <label htmlFor='otp'>
@@ -76,4 +78,3 @@ function OtpPage() {
 }
 
 export default OtpPage;
-*/
