@@ -4,7 +4,7 @@ const User = require('../models/User');
 const { sendVerificationEmail } = require('../emailService');
 const { generateToken, secretKey } = require('../authUtils');
 const {jwtDecode} = require('jwt-decode');
-
+const MakeDon = require("../models/makedon");
 
 const userRegister = async (req, res) => {
   try {
@@ -110,6 +110,15 @@ const userLogin = (request, response) => {
       });
     });
 };
+const getAllDonor = async (req, res) => {
+  try {
+    MakeDon.find().then((donors) => {
+      res.status(200).send({ status: "donors fetched", donors });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Cannot find" });
+  }
+};
 
-
-module.exports = { userRegister, userVerify, userLogin, generateToken};
+module.exports = { userRegister, userVerify, userLogin, generateToken,getAllDonor};

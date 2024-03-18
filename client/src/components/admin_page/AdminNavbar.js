@@ -47,7 +47,7 @@ function AdminNavbar() {
             </li>
 
             <li className='nav-item'>
-            <Link to='/Donhis' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/Donor' className='nav-links' onClick={closeMobileMenu}>
               Donor Details
             </Link>
           </li>
