@@ -51,7 +51,7 @@ function Donor() {
   return (
     <div className="donhis">
       <div className="bor">
-        <a href='DonorPage' className='btn1'>Back</a>
+        <a href='AdminPage' className='btn1'>Back</a>
 
         <table className="table">
           <thead>
