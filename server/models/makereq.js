@@ -6,7 +6,8 @@ const makereqSchema = new mongoose.Schema({
   phone: Number,
   item: String,
   quantity: Number,
-  location: String, 
+  location: String,
+  isRequested: Boolean, 
 });
 
 const MakeReq = mongoose.model('Makereq', makereqSchema);

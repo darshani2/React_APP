@@ -26,6 +26,7 @@ import Test from './components/Test'
 import PreVerification from './components/preverification';
 import Donhis from './components/donor_page/Donhis';
 import Donor from './components/admin_page/Donor';
+import School from './components/admin_page/School';
 
 import Donations from './components/donor_page/Donations';
 import Requesters from './components/sch_page/Requesters';
@@ -75,6 +76,7 @@ function App() {
           <Route path='/DonUpdate' element={<DonUpdate />} />
           <Route path='/SchUpdate' element={<SchUpdate />} />
           <Route path='/Donor' element={<Donor />} />
+          <Route path='/School' element={<School />} />
           
 
           <Route path="/tests" element={<Test/>} />
