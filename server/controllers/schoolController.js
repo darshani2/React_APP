@@ -1,13 +1,11 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-//const axios = require("axios");
-const otpGenerator = require("otp-generator");
 const User = require("../models/school");
 const MakeReq = require("../models/makereq");
-//const Otp = require("../models/otpModels");
 const { sendVerificationEmail } = require("../emailService");
 const { generateToken, secretKey } = require("../authUtils");
 const { jwtDecode } = require("jwt-decode");
+const otpGenerator = require("otp-generator");
 
 const userRegister = async (req, res) => {
   try {
@@ -127,7 +125,7 @@ const addSchool = async (req, res) => {
     const item = req.body.item;
     const quantity = Number(req.body.quantity);
     const location = req.body.location;
-    const isRequested = true;
+    const isRequested = false;
 
     const newRequest = new MakeReq({
       name,
@@ -174,21 +172,20 @@ const getSchoolByEmail = async (req, res) => {
 
 const deleteSchoolById = async (req, res) => {
   try {
-    let id = req.body.id;
+    let id = req.query.id;
     await MakeReq.findByIdAndDelete(id).then(() => {
-      res.status(200).send({ status: "school deleted" });
+      res.status(200).send({ status: "requester deleted" });
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error with delete school" });
+    res.status(500).json({ message: "Error with delete donor" });
   }
 };
 
 const updateSchoolById = async (req, res) => {
   try {
-    let id = req.body.id;
-    const { name, email, phone, item, quantity, location } = req.body;
-
+    const { id, name, email, phone, item, quantity, location } = req.body;
+    let isRequested = false;
     const updateSchool = {
       name,
       email,
@@ -196,13 +193,18 @@ const updateSchoolById = async (req, res) => {
       item,
       quantity,
       location,
+      isRequested
     };
-    const update = await MakeReq.findByIdAndUpdate(id, updateSchool).then(() => {
-      res.status(200).send({ status: "User Updated" });
-    });
+    // // Use findByIdAndUpdate to find the document by _id and update it
+    const updatedSchool = await MakeReq.findByIdAndUpdate(id, updateSchool, { new: true });
+
+    if (!updatedSchool) {
+      return res.status(404).send({ status: "No document found to update" });
+    }
+    res.status(200).send({ status: "User Updated" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error with updating school" });
+    res.status(500).json({ message: "Error with updating requester" });
   }
 };
 
@@ -216,55 +218,5 @@ module.exports = {
   getSchoolByEmail,
   deleteSchoolById,
   updateSchoolById,
-
 };
 
-/* 
-module.exports.signUp = async(req, res) =>{
-  const user = await User.findOne({
-    number : req.body.number
-  });
-  if(user) return res.status(400).send("User already registered!");
-}
-Module.exports.verifyOtp = async(req, res) =>{
- digits: true, alphabets : true, upperCase : false, specialCharts : false
-
-});
-const number = req.body.number;
-console.log(OTP);
-
-const otp = new Otp({number: number, otp: OTP});
-const salt = await bctypt.genSalt(10)
-otp.otp = await bcrypt.hash(otp.otp, salt);
-const result = await otp.save();
-return res.status(200).send("Otp send successfully!");
-}
-module.exports.verifyOtp = async(req, res) =>{
-  const otpHolder = await Otp.find({
-    number: req.body.number
-  });
-
-  if (otpHolder.length === 0) return res.status(400).send("You use an Expired OTP!");
-  const rightOtpFind = otpHolder[otpHolder.length - 1];
-  const validUser = await bcrypt.compare(req.body.otp, rightOtpFind.otp);
-
-  if(rightOtppFind.number === req.body.number && validUser){
-    const user = new User(_.pick(req.body, ["number"]));
-    const token = user.generateJWT();
-    const result = await user.save();
-    const OTPDelete = await Otp.deleteMany({
-      number: rightOtpFind.number
-    });
-
-    return res.status(200).send9{
-      message: "User Registration Successfull!",
-      token : token,
-      data : result
-    });
-  } else{
-    return res.status(400).send("Your OTP was wrong")
-  }
-}
-
-
-*/

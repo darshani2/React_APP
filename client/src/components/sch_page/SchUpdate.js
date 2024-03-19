@@ -1,54 +1,52 @@
 // C:\react-js\my-app\src\components\UpdateUser.js
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SchUpdate() {
-  const { id } = useParams();
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [item, setItem] = useState();
-  const [quantity, setQuantity] = useState();
-  const [location, setLocation] = useState();
+  const queryParams = new URLSearchParams(window.location.search);
+  const oldId = queryParams.get('id');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:8081/user/donor/get?userId=${userId}');
-        console.log(response);
-        setName(response.data.name);
-        setEmail(response.data.email);
-        setPhone(response.data.phone);
-        setItem(response.data.item);
-        setQuantity(response.data.quantity);
-        setLocation(response.data.location);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    fetchData();
-  }, []);
-
+  const [name, setNewName] = useState(queryParams.get('name') || '');
+  const [email, setNewEmail] = useState(queryParams.get('email') || '');
+  const [phone, setNewPhone] = useState(queryParams.get('phone') || '');
+  const [item, setNewItem] = useState(queryParams.get('item') || '');
+  const [quantity, setNewQuantity] = useState(queryParams.get('quantity') || '');
+  const [location, setNewLocation] = useState(queryParams.get('location') || '');
   const navigate = useNavigate();
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const handleUpdate = async (e) => {
+    e.preventDefault()
     axios
-      .put("http://localhost:8081/user/donor/update/" + id, { name, email, phone, item, quantity, location })
-      .then((res) => {
-        console.log(res);
-        navigate("/");
+      .put(`http://localhost:8081/user/school/update`, {
+        "id": oldId,
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "item": item,
+        "quantity": quantity,
+        "location": location
       })
-      .catch((err) => console.log(err));
+      .then((res) => {
+        if (res.status === 200) {
+          navigate("/MakeReq");
+        } else {
+          alert('Network error.');
+        }
+      })
+      .catch((err) => {
+        console.error('Error while updating requesting data:', err);
+        alert('An error occurred while updating requests data.');
+      });
+
   };
 
   return (
-    <div className="donUpdate">
+    <div className="schUpdate">
       <div className="border">
-        <form onSubmit={handleUpdate}>
-          <h2>Update School </h2>
+        <form>
+          <h2>Update School</h2>
           <table>
             <tbody>
               <tr>
@@ -61,7 +59,7 @@ function SchUpdate() {
                     placeholder="Enter Name"
                     className="form-control"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setNewName(e.target.value)}
                   />
                 </td>
               </tr>
@@ -75,7 +73,7 @@ function SchUpdate() {
                     placeholder="Enter Email"
                     className="form-control"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setNewEmail(e.target.value)}
                   />
                 </td>
               </tr>
@@ -89,7 +87,7 @@ function SchUpdate() {
                     placeholder="Enter Phone"
                     className="form-control"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setNewPhone(e.target.value)}
                   />
                 </td>
               </tr>
@@ -103,7 +101,7 @@ function SchUpdate() {
                     placeholder="Type of item"
                     className="form-control"
                     value={item}
-                    onChange={(e) => setItem(e.target.value)}
+                    onChange={(e) => setNewItem(e.target.value)}
                   />
                 </td>
               </tr>
@@ -117,7 +115,7 @@ function SchUpdate() {
                     placeholder="Enter Quantity"
                     className="form-control"
                     value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
+                    onChange={(e) => setNewQuantity(e.target.value)}
                   />
                 </td>
               </tr>
@@ -131,14 +129,14 @@ function SchUpdate() {
                     placeholder="Enter location"
                     className="form-control"
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setNewLocation(e.target.value)}
                   />
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <button className="btn1">Update</button>
+          <button type="submit" className="btn1" onClick={(e) => handleUpdate(e)}>Update</button>
         </form>
       </div>
     </div>

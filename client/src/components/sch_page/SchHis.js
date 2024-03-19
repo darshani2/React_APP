@@ -12,10 +12,10 @@ function SchHis() {
   useEffect(() => {
     if (email) {
       axios
-        .get(`http://localhost:8081/user/donor/get?email=${email}`)
+        .get(`http://localhost:8081/user/school/get?email=${email}`)
         .then((res) => {
           if (res.status === 200) {
-            setUsers(res.data.donors);
+            setUsers(res.data.schools);
           } else {
             alert('Network error.');
           }
@@ -29,7 +29,7 @@ function SchHis() {
 
   const handleDelete = (userId) => {
     axios
-      .delete(`http://localhost:8081/user/donor/delete/${userId}`)
+      .delete(`http://localhost:8081/user/school/delete/?id=${userId}`)
       .then((res) => {
         if (res.status === 200) {
           alert(`User with ID ${userId} deleted successfully`);
@@ -52,10 +52,10 @@ function SchHis() {
   return (
     <div className="donhis">
       <div className="bor">
-        <Link to="/makedon" className="btn1">
+        <Link to="/makeReq" className="btn1">
           ADD +
         </Link>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href='DonorPage' className='btn1'>Back</a>
+        <a href='SchoolPage' className='btn1'>Back</a>
 
         <table className="table">
           <thead>
@@ -74,7 +74,7 @@ function SchHis() {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.userId || generateUUID()}</td>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
@@ -82,8 +82,8 @@ function SchHis() {
                   <td>{user.quantity}</td>
                   <td>{user.location}</td>
                   <td>
-                    <Link to={`/update/${user.userId || generateUUID()}`} className="btn-update">Update</Link>
-                    <button onClick={() => handleDelete(user.userId || generateUUID())} className="btn-delete">Delete</button>
+                    <Link to={`/SchUpdate/?id=${user._id}&name=${user.name}&email=${user.email}&phone=${user.phone}&item=${user.item}&quantity=${user.quantity}&location=${user.location}`} className="btn-update">Update</Link>
+                    <button onClick={() => handleDelete(user._id)} className="btn-delete">Delete</button>
                   </td>
                 </tr>
               );
