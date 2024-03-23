@@ -34,6 +34,7 @@ function Donhis() {
         if (res.status === 200) {
           alert(`User with ID ${userId} deleted successfully`);
           setUsers(users.filter(user => user.userId !== userId));
+          window.location.reload();
         } else {
           alert('Deletion was unsuccessful. Check your credentials.');
         }

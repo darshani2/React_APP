@@ -11,7 +11,7 @@ export const MenuItems = [
     },
     {
       title: 'School',
-      path: '/SchoolLogin',
+      path: '/SchoolSignup',
       cName: 'dropdown-link'
     }
     

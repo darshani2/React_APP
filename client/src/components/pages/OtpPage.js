@@ -1,16 +1,17 @@
 
 import React, { useState } from 'react'; // Remove useEffect if not used
-import { useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import '../../App.css';
 
 function OtpPage() {
+  const location = useLocation();
   const [values, setValues] = useState({
     otp: '',
+    userId: location.state.userId
   });
   const navigate = useNavigate();
-
   const [errors, setErrors] = useState({});
 
   const handleInput = (event) => {
@@ -33,7 +34,7 @@ function OtpPage() {
       .then((res) => {
         if (res.status === 200) {
           // Assuming res.data contains necessary information
-          navigate('/SchoolLogin');
+          navigate('/SchoolPage');
         } else {
           alert('Login failed. Check your credentials.');
         }

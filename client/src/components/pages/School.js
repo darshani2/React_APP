@@ -31,7 +31,8 @@ function SchoolSignup() {
         const response = await axios.post('http://localhost:8081/user/school/register', values);
 
         if (response.status === 201) {
-          navigate('/OtpPage');
+        const userId = response.data.userId; // Extract the user ID from the response
+        navigate('/OtpPage', { state: { userId } })
         } else {
           console.log('Registration failed:', response.data.message);
         }
@@ -107,8 +108,8 @@ function SchoolSignup() {
               {errors.number && <span className="text-danger">{errors.number}</span>}
             </div>
 
-             <button type="submit" className="btn">
-              Sign Up
+            <button type='submit' className='btn'>
+              Log in
             </button>
             <div className="phg">
               <p>Already have an account ? </p>

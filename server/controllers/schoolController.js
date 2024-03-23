@@ -10,7 +10,7 @@ const otpGenerator = require("otp-generator");
 const userRegister = async (req, res) => {
   try {
     const path = req.originalUrl;
-    console.log(path);
+    // console.log(path);
     let userRole;
 
     if (path.includes("admin")) {
@@ -23,10 +23,11 @@ const userRegister = async (req, res) => {
       return res.status(400).json({ message: "Invalid registration route" });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, number } = req.body;
 
     const verificationToken = generateToken(email, userRole);
-    console.log(verificationToken);
+    const OTP = generateNumericOTP(6); // Generate OTP
+    console.log("Generated OTP : " + OTP);
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -36,9 +37,11 @@ const userRegister = async (req, res) => {
       verificationToken,
       isVerified: false,
       role: userRole,
+      phone: number,
+      otp: OTP
     });
 
-    await newUser.save();
+    const savedUser = await newUser.save();
 
     sendVerificationEmail(
       newUser.email,
@@ -47,12 +50,21 @@ const userRegister = async (req, res) => {
       userRole
     );
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: "User registered successfully", userId: savedUser._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Registration failed" });
   }
 };
+
+function generateNumericOTP(length) {
+  const digits = '0123456789';
+  let OTP = '';
+  for (let i = 0; i < length; i++) {
+    OTP += digits[Math.floor(Math.random() * 10)]; // Randomly select a digit from 0 to 9
+  }
+  return OTP;
+}
 
 const userVerify = async (req, res) => {
   const token = req.query.token;
@@ -115,6 +127,32 @@ const userLogin = (request, response) => {
         e,
       });
     });
+};
+
+const otp = async (req, res) => {
+  try {
+    const otp = Number(req.body.otp);
+    const userId = req.body.userId;
+
+    // Retrieve the user from the database using the userId
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(500).json({ message: "User not found" });
+    }
+
+    // Compare the OTPs
+    if (otp === user.otp) {
+      // Correct OTP, send 200 response
+      return res.status(200).json({ message: "OTP verification successful" });
+    } else {
+      // Incorrect OTP, send 500 response
+      return res.status(500).json({ message: "Incorrect OTP" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Incorrect OTP" });
+  }
 };
 
 const addSchool = async (req, res) => {
@@ -218,5 +256,6 @@ module.exports = {
   getSchoolByEmail,
   deleteSchoolById,
   updateSchoolById,
+  otp
 };
 

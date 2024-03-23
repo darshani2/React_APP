@@ -7,6 +7,8 @@ const schoolSchema = new mongoose.Schema({
   verificationToken: String,
   isVerified: Boolean,
   role: String,
+  phone: Number,
+  otp: Number
 });
 
 const School = mongoose.model('School', schoolSchema);
