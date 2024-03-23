@@ -53,7 +53,7 @@ function AdminNavbar() {
           </li>
 
           <li className='nav-item'>
-            <Link to='/schHis' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/School' className='nav-links' onClick={closeMobileMenu}>
               School Details
             </Link>
           </li>

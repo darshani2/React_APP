@@ -1,4 +1,4 @@
-const { Schema, model} = require("mongoose");
+/*const { Schema, model} = require("mongoose");
 
 module.exports.Otp = model('Otp', Schema({
     number: {
@@ -14,3 +14,4 @@ module.exports.Otp = model('Otp', Schema({
     //After 5 minutes it detected automatically from the database
 }, {timestamps : true}
 ))
+*/

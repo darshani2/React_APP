@@ -5,6 +5,7 @@ const { sendVerificationEmail } = require('../emailService');
 const { generateToken, secretKey } = require('../authUtils');
 const {jwtDecode} = require('jwt-decode');
 const MakeDon = require("../models/makedon");
+const MakeReq = require("../models/makereq");
 
 const userRegister = async (req, res) => {
   try {
@@ -121,4 +122,15 @@ const getAllDonor = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, userVerify, userLogin, generateToken,getAllDonor};
+const getAllSchool = async (req, res) => {
+  try {
+    MakeReq.find().then((schools) => {
+      res.status(200).send({ status: "schools fetched", schools });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Cannot find" });
+  }
+};
+
+module.exports = { userRegister, userVerify, userLogin, generateToken, getAllDonor, getAllSchool };
