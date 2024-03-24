@@ -113,7 +113,8 @@ const userLogin = (request, response) => {
 };
 const getAllDonor = async (req, res) => {
   try {
-    MakeDon.find().then((donors) => {
+    let isRequested = false;
+    MakeDon.find({isRequested}).then((donors) => {
       res.status(200).send({ status: "donors fetched", donors });
     });
   } catch (error) {

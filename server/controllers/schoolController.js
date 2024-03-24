@@ -163,7 +163,7 @@ const addSchool = async (req, res) => {
     const item = req.body.item;
     const quantity = Number(req.body.quantity);
     const location = req.body.location;
-    const isRequested = false;
+    const isRequested = true;
 
     const newRequest = new MakeReq({
       name,

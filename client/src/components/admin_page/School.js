@@ -9,7 +9,7 @@ function School() {
 
   useEffect(() => {
       axios
-        .get(`http://localhost:8081/user/admin/get`)
+        .get(`http://localhost:8081/user/admin/getSchool`)
         .then((res) => {
           if (res.status === 200) {
             console.log(res)
