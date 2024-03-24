@@ -114,7 +114,7 @@ function SchoolSignup() {
             <div className="phg">
               <p>Already have an account ? </p>
             </div>
-            <Link to="/DonorLogin" className="btn btn--block">
+            <Link to="/SchoolLogin" className="btn btn--block">
               Login
             </Link>
           </form>
